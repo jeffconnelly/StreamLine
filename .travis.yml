@@ -1,0 +1,11 @@
+language: node_js
+node_js: node
+services:
+- mongodb
+deploy:
+  provider: heroku
+  api_key:
+    secure: EhUX63j+9nkswOIb1jKE5xSyGXIdcdjFUIzplCUmWtySqgrxuME9EqlADbQHq2BfDeRfkEFa88iiNduKjIBOve7omFYL1zoEYsoFqo8xQFixIolU2MYJUa9vsr1uUMCMDo0uB0DxZZUYHU2UplwyV26vAlYHhpa7hth374YhisX9iwPtF+MdlLR6Sl5lD9JVcBBe4ArEADThA3x73CuQeAJjEmKsLtT5i/uVow8SQmoVs6hoyKVYsjKpGtqPCyLFXbwHFw5ypdfKOgvlxpHCL5/XI842vt246bHkwX9Ejj7Wms25GA1eWYcM9KnDq58dk1IGeF+sseiUj0RZ1/FZGlTwGntExVWGJfv/PutAuAcbZi1sh8LSv/JQJI+LoYQiEdJtQdc8/tbctLnhDxDB3Gv20bGMOaLD8wylggHuDyDAiHVuMpP4O4XO9gCslXWyc57485u2wfTxsUDUS6owqXwWL6ziKSfTVeR+EaGDdcLuNlQtJtGgFhc6jcCSY8IiMW8qfu6zm0VSRFsInYuo6Yq1yFmhhlEBLCipPszQ0UzQI61TzLd8gHMm8HY3FEmFOcdwt49cOaMrJJjan0+N/XYViFsR7yxcf2BQgv+5uAT2+YZ2YumFGj+brTXvC+wW/lJgPuiUQFBlSz+cP1IxWuUoOna2CNmAHk0gAThzPFc=
+  app: streamline-capstone
+  on:
+    repo: thinkful-ei17/Tricia-Jeff-Node-Capstone
