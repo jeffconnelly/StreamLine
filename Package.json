@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/thinkful-ei17/Tricia-Jeff-Node-Capstone/issues"
   },
-  "homepage": "https://github.com/thinkful-ei17/Tricia-Jeff-Node-Capstone#readme"
+  "homepage": "https://github.com/thinkful-ei17/Tricia-Jeff-Node-Capstone#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
 }
