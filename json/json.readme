@@ -1,0 +1,27 @@
+What we need from movie db:
+
+
+1. Movie title 
+"title": "The Lord of the Rings: The Return of the King",
+
+2. Release date 
+"release_date": "2003-12-01"
+
+3. Poster image path
+"poster_path": "/uexxR7Kw1qYbZk0RYaF9Rx5ykbj.jpg",
+  -For poster path, we need to add 
+  http://image.tmdb.org/t/p/w185//f5OxD8Nl0pR3DcYHtYhHRfpsmjl.jpg as the full URL
+  request to retrieve image upon render.  
+  -Our value in database will be poster endpoint/path: f5OxD8Nl0pR3DcYHtYhHRfpsmjl.jpg
+
+4. Movie overview
+"overview": "Aragorn is revealed as the heir to the ancient kings as he, Gandalf and the other members of the broken fellowship struggle to save Gondor from Sauron's forces. Meanwhile, Frodo and Sam bring the ring closer to the heart of Mordor, the dark lord's realm.",
+
+5. Vote average
+"vote_average": 8.2,
+
+6. Streaming info
+"netflix": true,
+"amazon": false,
+"hbo": true,
+"hulu": false
