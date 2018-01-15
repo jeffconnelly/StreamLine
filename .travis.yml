@@ -2,6 +2,10 @@ language: node_js
 node_js: node
 services:
 - mongodb
+before_install: - npm i -g npm@version-number
+cache:
+  directories:
+    - "node_modules"
 before_script: chmod 0777 ./node_modules/.bin/mocha
 deploy:
   provider: heroku
