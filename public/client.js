@@ -44,6 +44,7 @@ function movieCardTemplate(item) {
 
 function getMovieList() {
   console.log('getMovieList');
+  console.log('URL' + streamURL);
   $.ajax({
     url: streamURL,
     data: {
@@ -52,6 +53,8 @@ function getMovieList() {
     success: function(data) {
       displayMovieList();
     },
+    dataType: 'json',
+    contentType: 'application/json',
     type: 'GET'
   });
 } //end getMovieList
