@@ -31,4 +31,17 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/:id', (req, res) => {
+  Movies
+    .findById(req.params.id)
+    .then(movie => res.json(movie.serialize()))
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({ error: 'something went horribly awry' });
+    });
+});
+
+
+
+
 module.exports = router;
