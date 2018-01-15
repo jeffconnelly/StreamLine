@@ -2,16 +2,20 @@
 
 //Imports and initializations
 const express = require('express');
+
+const { DATABASE_URL, PORT } = require('../config');
+const  { Movies }  = require('../models.js');
+
 const router = express.Router();
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-// const { DATABASE_URL, PORT } = require('./config');
-const { MovieList } = require('../models.js');
 
-console.log(MovieList);
+
+console.log('router works!');
+// console.log(Movies);
 
 const app = express();
 
@@ -21,11 +25,13 @@ app.use(bodyParser.json());
 
 //Endpoints
 app.get('/', (req, res) => {
-  MovieList 
+  console.log('hello');
+  Movies
     .find()
     .then(movies => {
       console.log(movies);
-      res.json(movies.map(movie => movie.serialize()));
+      res.status(204);
+      res.json(movies.get());
     })
     .catch(err => {
       console.error(err);
@@ -33,4 +39,4 @@ app.get('/', (req, res) => {
     });
 });
 
-module.exports = router ;
+module.exports = router;

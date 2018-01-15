@@ -29,6 +29,6 @@ movieSchema.methods.serialize = function() {
   };
 };
 
-const MovieList = mongoose.model('MovieList', movieSchema);
+const Movies = mongoose.model('Movies', movieSchema);
 
-module.exports = {MovieList};
+module.exports = {Movies};
