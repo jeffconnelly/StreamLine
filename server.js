@@ -7,17 +7,20 @@ const express = require('express');
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
+const moviesRouter = require('./routers/movies.router');
 const { PORT, DATABASE_URL } = require('./config');
 
 const app = express();
+app.use(morgan('common'));
 
 //Send static files to client
 app.use(express.static('public'));
 
+//Re-route requests to our router
+app.use('/', moviesRouter);
 
 //Server functions
 let server;
-
 function runServer() {
   console.log('run server started');
   return new Promise((resolve, reject) => {
@@ -56,4 +59,4 @@ if (require.main === module) {
   runServer().catch(err => console.error(err));
 }
 
-module.exports = app; // this if for testing
+module.exports = { runServer, app, closeServer };
