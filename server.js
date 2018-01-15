@@ -7,7 +7,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-const {PORT, DATABASE_URL} = require('./config');
+const { PORT, DATABASE_URL } = require('./config');
 
 const app = express();
 
@@ -19,8 +19,9 @@ app.use(express.static('public'));
 let server;
 
 function runServer() {
+  console.log('run server started');
   return new Promise((resolve, reject) => {
-    mongoose.connect(DATABASE_URL, {useMongoClient: true}, err => {
+    mongoose.connect(DATABASE_URL, { useMongoClient: true }, err => {
       if (err) {
         return reject(err);
       }
@@ -37,6 +38,7 @@ function runServer() {
 }
 
 function closeServer() {
+  console.log('close server start');
   return mongoose.disconnect().then(() => {
     return new Promise((resolve, reject) => {
       console.log('Closing server');
