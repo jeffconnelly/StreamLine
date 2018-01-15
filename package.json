@@ -24,6 +24,7 @@
     },
     "dependencies": {
         "heroku": "^0.2.0",
+        "mongoose": "^4.13.9",
         "travis": "^0.1.1"
     }
 }
