@@ -1,9 +1,9 @@
 'use strict';
 
 //Initialize express, mongoose & middleware.
+const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-const express = require('express');
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
@@ -17,7 +17,7 @@ app.use(morgan('common'));
 app.use(express.static('public'));
 
 //Re-route requests to our router
-app.use('/', moviesRouter);
+app.use('/stream', moviesRouter);
 
 //Server functions
 let server;

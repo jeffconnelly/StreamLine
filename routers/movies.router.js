@@ -1,37 +1,29 @@
 'use strict';
 
 //Imports and initializations
+
 const express = require('express');
-
-const { DATABASE_URL, PORT } = require('../config');
-const  { Movies }  = require('../models.js');
-
 const router = express.Router();
+const { DATABASE_URL, PORT } = require('../config');
+const { Movies }  = require('../models.js');
+
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-
-
 console.log('router works!');
-// console.log(Movies);
-
-const app = express();
-
-app.use(morgan('common'));
-app.use(bodyParser.json());
+router.use(morgan('common'));
+router.use(bodyParser.json());
 
 
 //Endpoints
-app.get('/', (req, res) => {
-  console.log('hello');
+router.get('/', (req, res) => {
   Movies
     .find()
     .then(movies => {
       console.log(movies);
-      res.status(204);
-      res.json(movies.get());
+      res.json(movies);
     })
     .catch(err => {
       console.error(err);
