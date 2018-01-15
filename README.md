@@ -51,5 +51,18 @@ Alternate API : http://omdbapi.com/
 * As a user, I want to be able to view someone else's Box Office.
 * As a user, I want to use real API data to determine streaming location and movie title.
 
+## Endpoints
+
+Get / Read
+* Get all movies - '/' 
+
+Post / Create
+* Create a new movie in Box Office - '/'  
+
+Put / Update
+* Update a Box Office item - '/:id'  
+
+Delete / Delete
+* Delete a Box Office item - '/:id'  
 
 
