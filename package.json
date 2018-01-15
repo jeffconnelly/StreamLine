@@ -1,30 +1,33 @@
 {
-    "name": "package.json",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "start": "node server.js",
-        "test": "mocha --exit"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/thinkful-ei17/Tricia-Jeff-Node-Capstone.git"
-    },
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/thinkful-ei17/Tricia-Jeff-Node-Capstone/issues"
-    },
-    "homepage": "https://github.com/thinkful-ei17/Tricia-Jeff-Node-Capstone#readme",
-    "devDependencies": {
-        "chai": "^4.1.2",
-        "chai-http": "^3.0.0",
-        "mocha": "^4.1.0"
-    },
-    "dependencies": {
-        "heroku": "^0.2.0",
-        "mongoose": "^4.13.9",
-        "travis": "^0.1.1"
-    }
+  "name": "package.json",
+  "version": "1.0.0",
+  "description": "Streamline your streaming process!  StreamLine is the definitive directory for finding where you can watch movies and TV shows across multiple streaming services.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "mocha --exit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thinkful-ei17/Tricia-Jeff-Node-Capstone.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thinkful-ei17/Tricia-Jeff-Node-Capstone/issues"
+  },
+  "homepage": "https://github.com/thinkful-ei17/Tricia-Jeff-Node-Capstone#readme",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
+    "mocha": "^4.1.0"
+  },
+  "dependencies": {
+    "heroku": "^0.2.0",
+    "mongoose": "^4.13.9",
+    "travis": "^0.1.1"
+  },
+  "directories": {
+    "test": "test"
+  }
 }
