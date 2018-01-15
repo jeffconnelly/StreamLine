@@ -12,8 +12,8 @@ const streamURL = serverbase + 'stream';
 
 //movie list template
 function movieListTemplate(item) {
-  console.log('enter movie list template');
-  console.log(`${item.title}`);
+  console.log('movieListTemplate');
+
   return `<li class = "movie-item">
     <p><span class="movie-title">${item.title}</span></p>
     <div class = "poster-path"><img src="http://image.tmdb.org/t/p/w185/${item.poster_path}"</></div>
@@ -27,6 +27,7 @@ function movieListTemplate(item) {
 }
 
 function movieCardTemplate(item) {
+  console.log('movieCardTemplate');
   return `<div class = "movie-card"></div><p><span class="movie-title">${item.title}</span></p>
   <div class = "poster-path"><img src="http://image.tmdb.org/t/p/w185//${item.poster_path}"</></div>
   <div class = "release-date">Release Date:  ${item.release_date}</div>
@@ -45,7 +46,7 @@ function movieCardTemplate(item) {
 
 function getMovieList() {
   console.log('getMovieList');
-  console.log('URL' + streamURL);
+
   $.ajax({
     url: streamURL,
     data: {
@@ -60,13 +61,10 @@ function getMovieList() {
   });
 } //end getMovieList
 
-// const results = data.trails.map((item) => renderResult(item));
-// $('.js-search-results').html(results);
-
 
 function displayMovieList(data) {
   console.log('displayMovieList');
-  console.log(data);
+
   const movie = data.map((item) => movieListTemplate(item));
   $('.movie-list').html(movie);
 
@@ -74,30 +72,22 @@ function displayMovieList(data) {
 
 
 function getMovieCard() {
-  console.log('enter getMovieCard');
+  console.log('getMovieCard');
   $('.view-movie').on('click', event => {
+    console.log('view click');
     event.preventDefault();
 
-    let item = {
-      title: 'Die Hard',
-      posterPath: 'nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg',
-      releaseDate: '8/5/1982',
-      overview: 'This is an excellent moview for the whole family to see',
-      voteAvg: '8',
-      netflix: 'true',
-      amazon: 'true',
-      HBO: 'false',
-      hulu: 'true'
-    };
-    // $.ajax({
-    //     url: streamURL,
-    //     data: {
-    //       format: 'json'
-    //     },
-    //     success: displayMovieCard,
-    //     type: 'GET'
-    //   });
-    displayMovieCard(item);
+    $.ajax({
+      url: streamURL + '/' + this._id,
+      data: {
+        format: 'json'
+      },
+      success: function(data) {
+        displayMovieCard(data);
+      },
+      type: 'GET'
+    });
+
   });
 
 } //end getMovieCard
@@ -105,10 +95,10 @@ function getMovieCard() {
 
 function displayMovieCard(data) {
   console.log('displayMovieCard');
-  let card;
   $('.movie-list').remove();
-  card = movieCardTemplate(data);
-  $('.movie-list-form').append(card);
+  const movie = data.map((item) => movieCardTemplate(item));
+  $('.movie-list').html(movie);
+
 } //end displayMovieCard
 
 
