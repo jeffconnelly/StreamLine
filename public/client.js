@@ -60,17 +60,16 @@ function getMovieList() {
   });
 } //end getMovieList
 
+// const results = data.trails.map((item) => renderResult(item));
+// $('.js-search-results').html(results);
+
 
 function displayMovieList(data) {
   console.log('displayMovieList');
   console.log(data);
-  let movie;
-  $.each(data, function(index, item) {
-    console.log(index, item);
-    movie = movieListTemplate(item);
-    console.log(movie);
-    $('.movie-list').append(movie);
-  });
+  const movie = data.map((item) => movieListTemplate(item));
+  $('.movie-list').html(movie);
+
 } //end displayMovieList
 
 
