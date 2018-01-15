@@ -13,10 +13,11 @@ const streamURL = serverbase + 'stream';
 //movie list template
 function movieListTemplate(item) {
   console.log('enter movie list template');
+  console.log(`${item.title}`);
   return `<li class = "movie-item">
     <p><span class="movie-title">${item.title}</span></p>
-    <div class = "poster-path"><img src="http://image.tmdb.org/t/p/w185//${item.posterPath}"</></div>
-    <div class = "release-date">Release Date:  ${item.releaseDate}</div>
+    <div class = "poster-path"><img src="http://image.tmdb.org/t/p/w185/${item.poster_path}"</></div>
+    <div class = "release-date">Release Date:  ${item.release_date}</div>
     <div class="movie-item-controls">
     <button class="view-movie">
     <span class="button-label">View</span>
@@ -27,8 +28,8 @@ function movieListTemplate(item) {
 
 function movieCardTemplate(item) {
   return `<div class = "movie-card"></div><p><span class="movie-title">${item.title}</span></p>
-  <div class = "poster-path"><img src="http://image.tmdb.org/t/p/w185//${item.posterPath}"</></div>
-  <div class = "release-date">Release Date:  ${item.releaseDate}</div>
+  <div class = "poster-path"><img src="http://image.tmdb.org/t/p/w185//${item.poster_path}"</></div>
+  <div class = "release-date">Release Date:  ${item.release_date}</div>
   <p>Overview: ${item.overview}</p><p>Rating: ${item.voteAvg}</p>
   <ul class="stream-list">
   <li>${item.amazon}</li>
@@ -51,7 +52,7 @@ function getMovieList() {
       format: 'json'
     },
     success: function(data) {
-      displayMovieList();
+      displayMovieList(data);
     },
     dataType: 'json',
     contentType: 'application/json',
@@ -62,22 +63,13 @@ function getMovieList() {
 
 function displayMovieList(data) {
   console.log('displayMovieList');
+  console.log(data);
   let movie;
-  let Element = data.map(item => {
+  $.each(data, function(index, item) {
+    console.log(index, item);
     movie = movieListTemplate(item);
+    console.log(movie);
     $('.movie-list').append(movie);
-
-    // let item = {
-    //   title: 'Die Hard',
-    //   posterPath: 'nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg',
-    //   releaseDate: '8/5/1982'
-    // };
-    //   //temp data to test DOM manipulation
-    // let movie = [];
-    // //render item to HTML
-    // for (let i = 0; i < 10; i++) {
-
-    // }
   });
 } //end displayMovieList
 
@@ -121,5 +113,6 @@ function displayMovieCard(data) {
 } //end displayMovieCard
 
 
+$(getMovieList);
 $(displayMovieList);
 $(getMovieCard);
