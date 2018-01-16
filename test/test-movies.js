@@ -44,5 +44,21 @@ describe('GET Movies', function() {
         });
       });
   });
+
+  it('should provide one movie on GET by ID', function() {
+    return chai.request(app)
+      .get('/stream')
+      .then(function(res) {
+        expect(res).to.have.status(200);
+        expect(res).to.be.json;
+        expect(res.body).to.be.a('array');
+      });
+  });
 });
 
+// describe('POST Movies/Add movie to Box Office', function() {
+//   const item = {title: 'Inception'};
+//   return chai.request(app)
+//   .post('/')
+//   .send(newItem)
+// });
