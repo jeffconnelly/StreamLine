@@ -135,7 +135,8 @@ function addToBoxOffice() {
 
   $('.movie-list').on('click', '.add-to-box-office', event => {
     event.preventDefault();
-
+    let title = event.currentTarget().find('.movie-title');
+    console.log(title);
     $.ajax({
       url: streamURL,
       data: {
