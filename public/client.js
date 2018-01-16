@@ -137,14 +137,14 @@ function addToBoxOffice() {
     console.log('addToBoxOffice');
     event.preventDefault();
     let currentItem = event.currentTarget;
-    let title = $(currentItem).closest('li').find('span.movie-title');
-    title = title[0].innerHTML;
+    let _id = $(currentItem).closest('li').find('div.id');
+    _id = _id[0].innerHTML.toString();
 
     $.ajax({
       url: streamURL,
       data: {
         format: 'json',
-        title: title,
+        id: _id,
       },
       success: function(data) {
         displayBoxOffice(data);
