@@ -130,6 +130,7 @@ function displayMovieCard(data) {
   $(addToBoxOffice);
 } //end displayMovieCard
 
+
 function addToBoxOffice() {
   console.log('addToBoxOffice');
 
@@ -137,18 +138,19 @@ function addToBoxOffice() {
     console.log('addToBoxOffice');
     event.preventDefault();
     let currentItem = event.currentTarget;
-    let _id = $(currentItem).closest('li').find('div.id');
-    _id = _id[0].innerHTML.toString();
+    let id = $(currentItem).closest('li').find('div.id');
+    id = id[0].innerText;
+    console.log(typeof id + id);
+
 
     $.ajax({
+      dataType: 'json',
       url: streamURL,
-      data: {
-        format: 'json',
-        id: _id,
-      },
+      data: JSON.stringify({ id }),
       success: function(data) {
         displayBoxOffice(data);
       },
+      contentType: 'application/json',
       type: 'POST'
     });
   });
