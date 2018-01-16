@@ -40,4 +40,17 @@ li {
     margin: 10px;
     background-color: #FEF9E7;
     border-radius: 12px;
+    display: table-cell, block;
+}
+
+.movie-list {
+    display: table;
+    width: 100%;
+    float: left;
+}
+
+.movie-list:after {
+    content: "";
+    display: table;
+    clear: both;
 }
