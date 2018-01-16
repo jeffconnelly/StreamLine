@@ -5,9 +5,7 @@ const serverbase = '//localhost:8080/';
 const streamURL = serverbase + 'stream';
 
 
-// Full link path: http://image.tmdb.org/t/p/w185//nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg
 
-// Poster Path: /nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg
 
 
 //movie list template
