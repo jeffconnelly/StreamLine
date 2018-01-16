@@ -142,7 +142,6 @@ function addToBoxOffice() {
     id = id[0].innerText;
     console.log(typeof id + id);
 
-
     $.ajax({
       dataType: 'json',
       url: streamURL,
@@ -162,7 +161,7 @@ function displayBoxOffice(data) {
   $('.movie-card').remove();
   console.log('movieCardData = ' + data);
 
-  const movie = data.map((item) => boxOfficeTemplate(item));
+  const movie = boxOfficeTemplate(data);
   $('.box-office').html(movie);
 
 } //end displayBoxOffice
