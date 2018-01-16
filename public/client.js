@@ -162,7 +162,7 @@ function displayBoxOffice(data) {
   console.log('movieCardData = ' + data);
 
   const movie = boxOfficeTemplate(data);
-  $('.box-office').html(movie);
+  $('#movie-list-form').html(movie);
 
 } //end displayBoxOffice
 

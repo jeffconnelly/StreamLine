@@ -34,7 +34,8 @@ li {
 }
 
 .movie-item,
-.movie-card {
+.movie-card,
+.box-office {
     border: 2px solid black;
     padding: 10px;
     margin: 10px;
