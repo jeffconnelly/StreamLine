@@ -15,6 +15,11 @@ const movieSchema = mongoose.Schema({
   hulu: Boolean
 });
 
+//Create schema for Box Office
+const favoritesSchema = mongoose.Schema({
+
+});
+
 movieSchema.methods.serialize = function() {
   return {
     id: this._id,
