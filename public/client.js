@@ -28,8 +28,9 @@ function movieListTemplate(item) {
 function movieCardTemplate(item) {
   console.log('movieCardTemplate');
   console.log(item);
-  return `<li class = "movie-item">
+  return `<li class = "movie-card">
     <p><span class="movie-title">${item.title}</span></p>
+    <div class = "id" style="display:none;">${item.id}</div>
     <div class = "poster-path"><img src="http://image.tmdb.org/t/p/w185//${item.poster_path}"</></div>
     <div class = "release-date">Release Date: ${item.release_date}</div>
     <p>Overview: ${item.overview}</p><p>Rating: ${item.vote_average}</p>
@@ -43,6 +44,31 @@ function movieCardTemplate(item) {
       <span class="button-label">Add to Box Office</span>
       </button></div>
       </li>`;
+}
+
+function boxOfficeTemplate(item) {
+  console.log('boxOfficeTemplate');
+  return `<li class = "box-office">
+  <p><span class="movie-title">${item.title}</span></p>
+  <div class = "id" style="display:none;">${item.id}</div>
+  <div class = "poster-path"><img src="http://image.tmdb.org/t/p/w185//${item.poster_path}"</></div>
+  <div class = "release-date">Release Date: ${item.release_date}</div>
+  <p>Overview: ${item.overview}</p><p>Rating: ${item.vote_average}</p>
+  <p>class = "rating">My Rating:${item.user_rating}</p>
+  <p>class = "comments">Comments:${item.comment}</p>
+  <ul class="stream-list">
+    <li>Amazon: ${item.amazon}</li>
+    <li>HBO: ${item.hbo}</li>
+    <li>Netflix: ${item.netflix}</li>
+    <li>Hulu: ${item.hulu}</li></ul>
+  <div class="movie-item-controls">
+  <button class="update-movie">
+    <span class="button-label">Update</span>
+    </button>
+  <button class="remove-movie">
+    <span class="button-label">Remove</span>
+    </button></div>
+    </li>`;
 }
 
 function getMovieList() {
@@ -74,26 +100,24 @@ function displayMovieList(data) {
 
 function getMovieCard() {
   console.log('getMovieCard');
-  $('.movie-list').on('click', '.view-movie',
-    event => {
-      console.log('view click');
-      event.preventDefault();
-      let id = $(event.currentTarget).closest('li').find('div.id');
-      let _id = id[0].innerHTML;
+  $('.movie-list').on('click', '.view-movie', event => {
+    console.log('view click');
+    event.preventDefault();
+    let id = $(event.currentTarget).closest('li').find('div.id');
+    let _id = id[0].innerHTML;
 
-      $.ajax({
-        url: streamURL + '/' + _id,
-        data: {
-          format: 'json'
-        },
-        success: function(data) {
-          displayMovieCard(data);
-        },
-        type: 'GET'
-      });
-
+    $.ajax({
+      url: streamURL + '/' + _id,
+      data: {
+        format: 'json'
+      },
+      success: function(data) {
+        displayMovieCard(data);
+      },
+      type: 'GET'
     });
 
+  });
 } //end getMovieCard
 
 
@@ -101,12 +125,88 @@ function displayMovieCard(data) {
   console.log('displayMovieCard');
   $('.movie-list').remove();
   const movie = movieCardTemplate(data);
-  console.log(movie);
   $('#movie-list-form').html(movie);
 
 } //end displayMovieCard
+
+function addToBoxOffice() {
+  console.log('addToBoxOffice');
+
+  $('.movie-list').on('click', '.add-to-box-office', event => {
+    event.preventDefault();
+    let id = event.currentTarget().attr('id');
+
+    $.ajax({
+      url: streamURL + '/' + id,
+      data: {
+        format: 'json'
+      },
+      success: function(data) {
+        displayBoxOffice(data);
+      },
+      type: 'POST'
+    });
+  });
+} //end addToBoxOffice
+
+
+function displayBoxOffice(data) {
+  console.log('displayBoxOffice');
+  $('.movie-card').remove();
+  console.log('movieCardData = ' + data);
+
+  const movie = data.map((item) => boxOfficeTemplate(item));
+  $('.box-office').html(movie);
+
+} //end displayBoxOffice
+
+
+function updateBoxOffice() {
+  console.log('updateBoxOffice');
+  $('.update-movie').on('click', event => {
+    let rating = $('.rating').val();
+    let comment = $('.comments').text();
+    let id = event.currentTarget().attr('id');
+
+    $.ajax({
+      url: streamURL + '/' + id,
+      data: {
+        format: 'json',
+        user_rating: rating,
+        comment: comment,
+      },
+      success: function(data) {
+        displayBoxOffice(data);
+      },
+      type: 'PUT'
+    });
+  });
+} //end updateBoxOffice
+
+
+function deleteFromBoxOffice() {
+  console.log('deleteFromBoxOffice');
+  $('.remove-movie').on('click', event => {
+    event.preventDefault();
+    let id = event.currentTarget().attr('id');
+    $.ajax({
+      url: streamURL + '/' + id,
+      data: {
+        format: 'json',
+      },
+      success: function(data) {
+        displayBoxOffice(data);
+      },
+      type: 'DELETE'
+    });
+  });
+} //deleteFromBoxOffice
+
 
 
 $(getMovieList);
 $(displayMovieList);
 $(getMovieCard);
+$(addToBoxOffice);
+$(deleteFromBoxOffice);
+$(updateBoxOffice);
