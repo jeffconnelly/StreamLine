@@ -1,6 +1,24 @@
+body {
+    background-image: url(https://i.imgur.com/PV8ojj9.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: scroll;
+}
+
 h1,
 h2 {
-    display: center;
+    text-align: center;
+    color: red;
+    font-family: 'Fredoka One', cursive;
+}
+
+h1 {
+    font-size: 30px,
+}
+
+h2 {
+    font-size: 15px,
 }
 
 li {
@@ -12,4 +30,27 @@ li {
 .movie-item-controls {
     display: inline;
     position: right;
+    opacity: 1;
+}
+
+.movie-item,
+.movie-card {
+    border: 2px solid black;
+    padding: 10px;
+    margin: 10px;
+    background-color: #FEF9E7;
+    border-radius: 12px;
+    display: table-cell, block;
+}
+
+.movie-list {
+    display: table;
+    width: 100%;
+    float: left;
+}
+
+.movie-list:after {
+    content: "";
+    display: table;
+    clear: both;
 }
