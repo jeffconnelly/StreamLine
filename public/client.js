@@ -30,20 +30,21 @@ function movieListTemplate(item) {
 function movieCardTemplate(item) {
   console.log('movieCardTemplate');
   console.log(item);
-  return `<div class = "movie-card"></div><p><span class="movie-title">${item.title}</span></p>
-  <div class = "poster-path"><img src="http://image.tmdb.org/t/p/w185//${item.poster_path}"</></div>
-  <div class = "release-date">Release Date: ${item.release_date}</div>
-  <p>Overview: ${item.overview}</p><p>Rating: ${item.vote_average}</p>
-  <ul class="stream-list">
-  <li>Amazon: ${item.amazon}</li>
-  <li>HBO: ${item.hbo}</li>
-  <li>Netflix: ${item.netflix}</li>
-  <li>Hulu: ${item.hulu}</li></ul>
-  <div class="movie-item-controls">
-  <button class="add-to-box-office">
-  <span class="button-label">Add to Box Office</span>
-  </button>
-  `;
+  return `<li class = "movie-item">
+    <p><span class="movie-title">${item.title}</span></p>
+    <div class = "poster-path"><img src="http://image.tmdb.org/t/p/w185//${item.poster_path}"</></div>
+    <div class = "release-date">Release Date: ${item.release_date}</div>
+    <p>Overview: ${item.overview}</p><p>Rating: ${item.vote_average}</p>
+    <ul class="stream-list">
+      <li>Amazon: ${item.amazon}</li>
+      <li>HBO: ${item.hbo}</li>
+      <li>Netflix: ${item.netflix}</li>
+      <li>Hulu: ${item.hulu}</li></ul>
+    <div class="movie-item-controls">
+      <button class="add-to-box-office">
+      <span class="button-label">Add to Box Office</span>
+      </button></div>
+      </li>`;
 }
 
 function getMovieList() {
@@ -81,6 +82,7 @@ function getMovieCard() {
       event.preventDefault();
       let id = $(event.currentTarget).closest('li').find('div.id');
       let _id = id[0].innerHTML;
+
       $.ajax({
         url: streamURL + '/' + _id,
         data: {
