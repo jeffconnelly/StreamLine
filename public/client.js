@@ -53,8 +53,9 @@ function boxOfficeTemplate(item) {
   <div class = "id" style="display:none;">${item.id}</div>
   <div class = "poster-path"><img src="http://image.tmdb.org/t/p/w185//${item.poster_path}"</></div>
   <div class = "release-date">Release Date: ${item.release_date}</div>
-  <p>Overview: ${item.overview}</p><p>Rating: ${item.vote_average}</p>
-  <p>class = "rating">My Rating:${item.user_rating}</p>
+  <p>class = "overview" Overview: ${item.overview}</p>
+  <p>class="vote-rating" Rating: ${item.vote_average}</p>
+  <p>class = "user-rating">My Rating:${item.user_rating}</p>
   <p>class = "comments">Comments:${item.comment}</p>
   <ul class="stream-list">
     <li>Amazon: ${item.amazon}</li>
@@ -134,12 +135,14 @@ function addToBoxOffice() {
 
   $('.movie-list').on('click', '.add-to-box-office', event => {
     event.preventDefault();
-    let id = event.currentTarget().attr('id');
 
     $.ajax({
-      url: streamURL + '/' + id,
+      url: streamURL,
       data: {
-        format: 'json'
+        format: 'json',
+        title: event.currentTarget().find('.movie-title'),
+        // poster_path: event.currentTarget().find('.poster-path'),
+        // release_date: event.currentTarget().find('.release-date'),
       },
       success: function(data) {
         displayBoxOffice(data);
