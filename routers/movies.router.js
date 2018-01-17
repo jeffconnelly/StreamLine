@@ -5,7 +5,7 @@
 const express = require('express');
 const router = express.Router();
 const { DATABASE_URL, PORT } = require('../config');
-const { Movies, Favorites }  = require('../models.js');
+const { Movies, Favorites } = require('../models.js');
 
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
@@ -71,13 +71,14 @@ router.post('/', (req, res) => {
           netflix: obj.netflix,
           amazon: obj.amazon,
           hbo: obj.hbo,
-          hulu: obj.hulu});
+          hulu: obj.hulu
+        });
     })
     .then(
       favorites => res.status(201).json(favorites.serialize()))
     .catch(err => {
       console.error(err);
-      res.status(500).json({message: 'Internal server error'});
+      res.status(500).json({ message: 'Internal server error' });
     });
 });
 
@@ -105,16 +106,16 @@ router.put('/:id', (req, res) => {
   });
 
   Favorites
-    .findByIdAndUpdate(req.params.id, {$set: updateObj})
+    .findByIdAndUpdate(req.params.id, { $set: updateObj })
     .then(favorites => res.status(200).end())
-    .catch(err => res.status(500).json({message: 'Internal server error'}));
+    .catch(err => res.status(500).json({ message: 'Internal server error' }));
 });
 
 router.delete('/:id', (req, res) => {
   Favorites
     .findByIdAndRemove(req.params.id)
     .then(() => res.status(204).end())
-    .catch(err => res.status(500).json({message: 'Internal server error'}));
+    .catch(err => res.status(500).json({ message: 'Internal server error' }));
 });
 
 module.exports = router;

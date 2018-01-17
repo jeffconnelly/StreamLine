@@ -3,9 +3,7 @@
 
 const serverbase = '//localhost:8080/';
 const streamURL = serverbase + 'stream';
-
-
-
+const boxOfficeURL = streamURL + '/favorites';
 
 
 //movie list template
@@ -41,8 +39,15 @@ function movieCardTemplate(item) {
       <li>Hulu: ${item.hulu}</li></ul>
     <div class="movie-item-controls">
       <button class="add-to-box-office">
-      <span class="button-label">Add to Box Office</span>
-      </button></div>
+        <span class="button-label">Add to Box Office</span>
+      </button>
+      <button class="update-movie">
+        <span class="button-label">Update</span>
+      </button>
+      <button class="clear-movie">
+        <span class="button-label">Clear</span>
+      </button>
+    </div>
       </li>`;
 }
 
@@ -66,12 +71,11 @@ function boxOfficeTemplate(item) {
     <li>Netflix: ${item.netflix}</li>
     <li>Hulu: ${item.hulu}</li></ul>
   <div class="movie-item-controls">
-  <button class="update-movie">
-    <span class="button-label">Update</span>
-    </button>
   <button class="remove-movie">
     <span class="button-label">Remove</span>
-    </button></div></div>
+  </button>
+  </div>
+  </div>
     </li>`;
 }
 
@@ -92,14 +96,16 @@ function getMovieList() {
   });
 } //end getMovieList
 
-
 function displayMovieList(data) {
   console.log('displayMovieList');
+  $('.box-office-list').remove;
+  $('#movie-list-form').append('<ul class="movie-list"></ul>');
   console.log(data);
   const movie = data.map((item) => movieListTemplate(item));
   $('.movie-list').html(movie);
 
 } //end displayMovieList
+
 
 
 function getMovieCard() {
@@ -124,13 +130,13 @@ function getMovieCard() {
   });
 } //end getMovieCard
 
-
 function displayMovieCard(data) {
   console.log('displayMovieCard');
   $('.movie-list').remove();
+  $('#movie-list-form').append('<ul class="movie-card-list"></ul>');
   const movie = movieCardTemplate(data);
   $('.movie-card-list').html(movie);
-  $(addToBoxOffice);
+  // $(addToBoxOffice);
 } //end displayMovieCard
 
 
@@ -149,7 +155,7 @@ function addToBoxOffice() {
       url: streamURL,
       data: JSON.stringify({ id }),
       success: function(data) {
-        displayBoxOffice(data);
+        getBoxOfficeList(data);
       },
       contentType: 'application/json',
       type: 'POST'
@@ -157,14 +163,31 @@ function addToBoxOffice() {
   });
 } //end addToBoxOffice
 
+function getBoxOfficeList() {
+  console.log('getBoxOfficeList');
+
+  $.ajax({
+    url: boxOfficeURL,
+    data: {
+      format: 'json'
+    },
+    success: function(data) {
+      displayBoxOffice(data);
+    },
+    dataType: 'json',
+    contentType: 'application/json',
+    type: 'GET'
+  });
+} //end getMovieList
+
 
 function displayBoxOffice(data) {
+  console.log(data);
   console.log('displayBoxOffice');
-  $('.movie-card').remove();
-  $('.box-office').remove();
-  console.log('movieCardData = ' + data);
+  $('.movie-list').remove();
+  $('#movie-list-form').append('<ul class="box-office-list"></ul>');
 
-  const movie = boxOfficeTemplate(data);
+  const movie = data.map((item) => boxOfficeTemplate(item));
   $('.box-office-list').html(movie);
   // $(updateBoxOffice);
   // $(deleteFromBoxOffice);
@@ -188,7 +211,7 @@ function updateBoxOffice() {
         data: JSON.stringify({ rating, comment }),
       },
       success: function(data) {
-        displayBoxOffice(data);
+        getBoxOfficeList(data);
       },
       contentType: 'application/json',
       type: 'PUT'
@@ -211,7 +234,7 @@ function deleteFromBoxOffice() {
         format: 'json',
       },
       success: function(data) {
-        displayBoxOffice(data);
+        getBoxOfficeList(data);
       },
       contentType: 'application/json',
       type: 'DELETE'
@@ -220,10 +243,10 @@ function deleteFromBoxOffice() {
 } //deleteFromBoxOffice
 
 
-
 $(getMovieList);
 $(displayMovieList);
-$(getMovieCard);
 $(addToBoxOffice);
 $(deleteFromBoxOffice);
 $(updateBoxOffice);
+$(getMovieCard);
+$(getBoxOfficeList);
