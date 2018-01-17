@@ -44,7 +44,9 @@ li {
     display: table-cell, block;
 }
 
-.movie-list {
+.movie-list,
+.box-office-list,
+.movie-card-list {
     display: table;
     width: 100%;
     float: left;
