@@ -19,8 +19,10 @@ app.use(express.static('public'));
 //Re-route requests to our router
 app.use('/stream', moviesRouter);
 
+
 //Server functions
 let server;
+
 function runServer() {
   console.log('run server started');
   return new Promise((resolve, reject) => {
@@ -59,5 +61,4 @@ if (require.main === module) {
   runServer().catch(err => console.error(err));
 }
 
-module.exports = {app, runServer, closeServer};
-
+module.exports = { app, runServer, closeServer };

@@ -18,10 +18,11 @@ router.use(bodyParser.json());
 
 //Endpoints
 router.get('/', (req, res) => {
+  // console.log('enter GET');
   Movies
     .find()
     .then(movies => {
-      // console.log(movies);
+      console.log(movies);
       res.json(movies);
     })
     .catch(err => {
@@ -29,6 +30,20 @@ router.get('/', (req, res) => {
       res.status(500).json({ error: 'something went wrong' });
     });
 });
+router.get('/favorites', (req, res) => {
+  console.log('enter GET:Favorites');
+  Favorites
+    .find()
+    .then(favorites => {
+      console.log(favorites);
+      res.json(favorites);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({ error: 'something went wrong' });
+    });
+});
+
 
 router.get('/:id', (req, res) => {
   Movies
@@ -39,6 +54,8 @@ router.get('/:id', (req, res) => {
       res.status(500).json({ error: 'something went wrong' });
     });
 });
+
+
 
 router.post('/', (req, res) => {
 
@@ -96,6 +113,7 @@ router.post('/', (req, res) => {
 //   });
 
 router.put('/:id', (req, res) => {
+  // console.log('BACKEND PUT');
   const updateObj = {};
   const updateableFields = ['comment', 'user_rating'];
 
@@ -104,14 +122,15 @@ router.put('/:id', (req, res) => {
       updateObj[field] = req.body[field];
     }
   });
-
+  // console.log('UPDATE, ', updateObj);
   Favorites
     .findByIdAndUpdate(req.params.id, { $set: updateObj })
-    .then(favorites => res.status(200).end())
+    .then(favorites => res.status(204).end())
     .catch(err => res.status(500).json({ message: 'Internal server error' }));
 });
 
 router.delete('/:id', (req, res) => {
+  console.log('DELETE:', req.param.id);
   Favorites
     .findByIdAndRemove(req.params.id)
     .then(() => res.status(204).end())

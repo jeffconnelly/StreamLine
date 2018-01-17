@@ -65,7 +65,7 @@ movieSchema.methods.serialize = function() {
     netflix: this.netflix,
     amazon: this.amazon,
     hbo: this.hbo,
-    hulu: this.hulu
+    hulu: this.hulu,
   };
 };
 
@@ -99,6 +99,4 @@ favoritesSchema.methods.serialize = function() {
 const Movies = mongoose.model('Movies', movieSchema);
 const Favorites = mongoose.model('Favorites', favoritesSchema);
 
-module.exports = {Movies, Favorites};
-
-
+module.exports = { Movies, Favorites };

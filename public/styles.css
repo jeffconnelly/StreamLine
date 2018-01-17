@@ -34,8 +34,8 @@ li {
 }
 
 .movie-item,
-.movie-card,
-.box-office {
+.box-office,
+.movie-card {
     border: 2px solid black;
     padding: 10px;
     margin: 10px;
@@ -52,8 +52,13 @@ li {
     float: left;
 }
 
-.movie-list:after {
+.stream-list {
+    padding: 0px;
+}
+
+
+/* .movie-list:after {
     content: "";
     display: table;
     clear: both;
-}
+} */

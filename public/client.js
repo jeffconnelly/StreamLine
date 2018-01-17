@@ -32,51 +32,58 @@ function movieCardTemplate(item) {
     <div class = "poster-path"><img src="http://image.tmdb.org/t/p/w185//${item.poster_path}"</></div>
     <div class = "release-date">Release Date: ${item.release_date}</div>
     <p>Overview: ${item.overview}</p><p>Rating: ${item.vote_average}</p>
+    <label>My Rating:</label>
+      <input type="number" name="user-rating" id="user-rating">
+    <label>Comments:</label>
+      <input type="text" name="user-comments" id="user-comments">
     <ul class="stream-list">
-      <li>Amazon: ${item.amazon}</li>
-      <li>HBO: ${item.hbo}</li>
-      <li>Netflix: ${item.netflix}</li>
-      <li>Hulu: ${item.hulu}</li></ul>
-    <div class="movie-item-controls">
-      <button class="add-to-box-office">
-        <span class="button-label">Add to Box Office</span>
-      </button>
-      <button class="update-movie">
-        <span class="button-label">Update</span>
-      </button>
-      <button class="clear-movie">
-        <span class="button-label">Clear</span>
-      </button>
-    </div>
-      </li>`;
+    <lable>Streaming On:</label>
+      <li>Amazon: ${item.amazon}</li> 
+      <li> HBO: ${ item.hbo }</li> 
+      <li> Netflix: ${ item.netflix } </li> 
+      <li> Hulu: ${item.hulu } </li>
+      </ul>
+      <div class = "movie-item-controls" >
+        <button class = "add-to-box-office" >
+        <span class = "button-label" > Add to Box Office </span></button> 
+        <button class = "update-movie" >
+        <span class = "button-label" > Update </span> </button> 
+        <button class = "clear-movie" >
+        <span class = "button-label" > Clear </span> 
+        </button > <
+        /div> < /
+    li > `;
 }
 
 function boxOfficeTemplate(item) {
   console.log('boxOfficeTemplate');
-  return `<li class = "box-office">
-  <div class = "box-office-card">
-  <p><span class="movie-title">${item.title}</span></p>
-  <div class = "id" style="display:none;">${item.id}</div>
-  <div class = "poster-path"><img src="http://image.tmdb.org/t/p/w185//${item.poster_path}"</></div>
-  <div class = "release-date">Release Date: ${item.release_date}</div>
-  <p class = "overview" >Overview: ${item.overview}</p>
-  <p class = "vote-rating"> Rating: ${item.vote_average}</p>
-  <label for="user-rating">My Rating: ${item.user_rating}</label>
-  <input type="number" name="user-rating" id="user-rating">
-  <label for="user-comments">Comments: ${item.comment}</label>
-  <input type="text" name="user-comments" id="user-comments">
-  <ul class="stream-list">
-    <li>Amazon: ${item.amazon}</li>
-    <li>HBO: ${item.hbo}</li>
-    <li>Netflix: ${item.netflix}</li>
-    <li>Hulu: ${item.hulu}</li></ul>
-  <div class="movie-item-controls">
-  <button class="remove-movie">
-    <span class="button-label">Remove</span>
-  </button>
-  </div>
-  </div>
-    </li>`;
+  return `<li class = "box-office" >
+        <div class = "box-office-card" >
+        <p><span class = "movie-title" >${item.title} </span></p>
+        <div class = "id" style = "display:none;" >${item._id}</div> 
+        <div class = "poster-path"> 
+          <img src = "http://image.tmdb.org/t/p/w185//${item.poster_path}"></>
+        </div>
+        <div class = "release-date"> Release Date: ${item.release_date }</div> 
+        <p class = "overview"> Overview:${item.overview}</p> 
+        <p class = "vote-rating"> Rating:${item.vote_average}</p> 
+        <label > My Rating:${item.user_rating}</label> 
+          <input type = "number" name = "user-rating" id = "user-rating" >
+        <label > Comments:${item.comment}</label> 
+          <input type = "text" name = "user-comments" id = "user-comments" >
+        <ul class = "stream-list" >
+          <li> Amazon:${item.amazon}</li> 
+          <li> HBO:${item.hbo}</li> 
+          <li> Netflix:${item.netflix}</li> 
+          <li> Hulu:${item.hulu}</li>
+        </ul>
+        <div class = "movie-item-controls" >
+          <button class = "remove-movie" >
+            <span class = "button-label" > Remove </span> 
+          </button> 
+        </div> 
+        </div>
+        </li>`;
 }
 
 function getMovieList() {
@@ -136,20 +143,20 @@ function displayMovieCard(data) {
   $('#movie-list-form').append('<ul class="movie-card-list"></ul>');
   const movie = movieCardTemplate(data);
   $('.movie-card-list').html(movie);
-  // $(addToBoxOffice);
+
 } //end displayMovieCard
 
 
 function addToBoxOffice() {
   console.log('addToBoxOffice');
 
-  $('.movie-card-list').on('click', '.add-to-box-office', event => {
+  $('#movie-list-form').on('click', '.add-to-box-office', event => {
     console.log('addToBoxOffice');
     event.preventDefault();
     let currentItem = event.currentTarget;
     let id = $(currentItem).closest('li').find('div.id');
     id = id[0].innerText;
-
+    console.log(id);
     $.ajax({
       dataType: 'json',
       url: streamURL,
@@ -168,9 +175,6 @@ function getBoxOfficeList() {
 
   $.ajax({
     url: boxOfficeURL,
-    data: {
-      format: 'json'
-    },
     success: function(data) {
       displayBoxOffice(data);
     },
@@ -185,6 +189,7 @@ function displayBoxOffice(data) {
   console.log(data);
   console.log('displayBoxOffice');
   $('.movie-list').remove();
+  $('.movie-card-list').remove();
   $('#movie-list-form').append('<ul class="box-office-list"></ul>');
 
   const movie = data.map((item) => boxOfficeTemplate(item));
@@ -196,9 +201,12 @@ function displayBoxOffice(data) {
 
 function updateBoxOffice() {
   console.log('updateBoxOffice');
-  $('.box-office-list').on('click', '.update-movie', event => {
-    let rating = $('.user-rating').val();
-    let comment = $('.user-comments').text();
+  $('#movie-list-form').on('click', '.update-movie', event => {
+    event.preventDefault();
+    let rating = $('#user-rating').val();
+    console.log(rating);
+    let comment = $('#user-comments').val();
+    console.log(comment);
     let id = $(event.currentTarget).closest('li').find('div.id');
     id = id[0].innerText;
     console.log(rating, comment, id);
@@ -206,11 +214,9 @@ function updateBoxOffice() {
     $.ajax({
       dataType: 'json',
       url: streamURL + '/' + id,
-      data: {
-        format: 'json',
-        data: JSON.stringify({ rating, comment }),
-      },
+      data: JSON.stringify({ user_rating: rating, comment: comment }),
       success: function(data) {
+        console.log('UPDATE SUCCESS');
         getBoxOfficeList(data);
       },
       contentType: 'application/json',
@@ -222,17 +228,15 @@ function updateBoxOffice() {
 
 function deleteFromBoxOffice() {
   console.log('deleteFromBoxOffice');
-  $('.box-office-list').on('click', '.remove-movie', event => {
+  $('#movie-list-form').on('click', '.remove-movie', event => {
     event.preventDefault();
     let id = $(event.currentTarget).closest('li').find('div.id');
     id = id[0].innerText;
+    console.log(id);
 
     $.ajax({
       dataType: 'json',
       url: streamURL + '/' + id,
-      data: {
-        format: 'json',
-      },
       success: function(data) {
         getBoxOfficeList(data);
       },
@@ -249,4 +253,4 @@ $(addToBoxOffice);
 $(deleteFromBoxOffice);
 $(updateBoxOffice);
 $(getMovieCard);
-$(getBoxOfficeList);
+// $(getBoxOfficeList);
