@@ -56,7 +56,7 @@ describe('GET Movies', function() {
   });
 
   it('should add a movie to Box Office', function() {
-    const item = {id: '5a5d039f1ac0adb9ace9e58b'};
+    const item = {id: '5a5ebf0c1ac0adb9acea03ec'};
     return chai.request(app)
       .post('/stream')
       .send(item)
