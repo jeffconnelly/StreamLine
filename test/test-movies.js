@@ -54,11 +54,56 @@ describe('GET Movies', function() {
         expect(res.body).to.be.a('array');
       });
   });
-});
 
-// describe('POST Movies/Add movie to Box Office', function() {
-//   const item = {title: 'Inception'};
-//   return chai.request(app)
-//   .post('/')
-//   .send(newItem)
-// });
+  it('should add a movie to Box Office', function() {
+    const item = {id: '5a5d039f1ac0adb9ace9e58b'};
+    return chai.request(app)
+      .post('/stream')
+      .send(item)
+      .then(function(res) {
+        expect(res).to.have.status(201);
+        expect(res).to.be.json;
+        expect(res.body).to.be.a('object');
+        expect(res.body).to.include.keys('id', 'title', 'overview', 'vote_average', 'poster_path','amazon', 'hbo', 'hulu', 'netflix');
+        expect(res.body.id).to.not.equal(null);
+      });
+  });
+
+  it('should update movie in Box Office', function() {
+
+    const newData = {
+      comment: 'Great movie!',
+      user_rating: 5
+    };
+
+    return chai.request(app)
+      .get('/stream')
+      .then(function(res) {
+        newData.id = res.body[0]._id;
+        return chai.request(app)
+          .put(`/stream/${newData.id}`)
+          .send(newData);
+      })
+      .then(function(res) {
+        console.log(res);
+        expect(res).to.have.status(200);
+        //Currently updates, but no response.
+        // expect(res).to.be.json;
+        // expect(res.body).to.be.a('object');
+        // expect(res.body).to.equal(newData);
+      });
+  });
+
+  it('should delete items from Box Office', function() {
+    return chai.request(app)
+  
+      .get('/stream')
+      .then(function(res) {
+        return chai.request(app)
+          .delete(`/stream/${res.body[0]._id}`);
+      })
+      .then(function(res) {
+        expect(res).to.have.status(204);
+      });
+  });
+});
