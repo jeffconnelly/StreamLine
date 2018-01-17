@@ -35,11 +35,11 @@
 }
 
 {
-  "title": "Valerian and the City of a Thousand Planets", 
-  "release_date": "2017-07-20", 
-  "poster_path": "/jfIpMh79fGRqYJ6PwZLCntzgxlF.jpg", 
-  "overview": "In the 28th century, Valerian and Laureline are special operatives charged with keeping order throughout the human territories. On assignment from the Minister of Defense, the two undertake a mission to Alpha, an ever-expanding metropolis where species from across the universe have converged over centuries to share knowledge, intelligence, and cultures. At the center of Alpha is a mysterious dark force which threatens the peaceful existence of the City of a Thousand Planets, and Valerian and Laureline must race to identify the menace and safeguard not just Alpha, but the future of the universe.", 
-  "vote_average": 6.6, 
+  "title": "WALL·E", 
+  "release_date": "2008-06-22", 
+  "poster_path": "/9cJETuLMc6R0bTWRA5i7ctY9bxk.jpg", 
+  "overview": "WALL·E is the last robot left on an Earth that has been overrun with garbage and all humans have fled to outer space. For 700 years he has continued to try and clean up the mess, but has developed some rather interesting human-like qualities. When a ship arrives with a sleek new type of robot, WALL·E thinks he's finally found a friend and stows away on the ship when it leaves.", 
+  "vote_average": 7.8, 
   "netflix": true,
   "amazon": false,
   "hbo": true,
@@ -83,11 +83,11 @@
 }
 
 {
-  "title": "Inception", 
-  "release_date": "2010-07-14", 
-  "poster_path":  "/qmDpIHrmpJINaRKAfWQfftjCdyi.jpg", 
-  "overview":  "Cobb, a skilled thief who commits corporate espionage by infiltrating the subconscious of his targets is offered a chance to regain his old life as payment for a task considered to be impossible: \"inception\", the implantation of another person's idea into a target's subconscious.", 
-  "vote_average": 8.1, 
+  "title": "Mad Max: Fury Road", 
+  "release_date": "2015-05-13", 
+  "poster_path":  "/kqjL17yufvn9OVLyXYpvtyrFfak.jpg", 
+  "overview":  "An apocalyptic story set in the furthest reaches of our planet, in a stark desert landscape where humanity is broken, and most everyone is crazed fighting for the necessities of life. Within this world exist two rebels on the run who just might be able to restore order. There's Max, a man of action and a man of few words, who seeks peace of mind following the loss of his wife and child in the aftermath of the chaos. And Furiosa, a woman of action and a woman who believes her path to survival may be achieved if she can make it across the desert back to her childhood homeland.", 
+  "vote_average": 7.3, 
   "netflix": true,
   "amazon": false,
   "hbo": true,
@@ -180,11 +180,11 @@
 
 
 {
-  "title": "The Simpsons Movie", 
-  "release_date": "2007-07-25", 
-  "poster_path":  "/eCytnEriVur3rT47NWfkgPXD9qs.jpg",
-  "overview":  "Vampires and werewolves have waged a nocturnal war against each other for centuries. But all bets are off when a female vampire warrior named Selene, who's famous for her strength and werewolf-hunting prowess, becomes smitten with a peace-loving male werewolf, Michael, who wants to end the war.", 
-  "vote_average": 6.9, 
+  "title": "Batman Begins", 
+  "release_date": "2005-06-10", 
+  "poster_path":  "/dr6x4GyyegBWtinPBzipY02J2lV.jpg",
+  "overview":  "Driven by tragedy, billionaire Bruce Wayne dedicates his life to uncovering and defeating the corruption that plagues his home, Gotham City.  Unable to work within the system, he instead creates a new identity, a symbol of fear for the criminal underworld - The Batman.", 
+  "vote_average": 7.5, 
   "netflix": true,
   "amazon": false,
   "hbo": true,
@@ -253,11 +253,11 @@
 }
 
 {
-  "title": "The Hobbit: The Battle of the Five Armies", 
-  "release_date": "2014-12-10", 
-  "poster_path":  "/dM2w364MScsjFf8pfMbaWUcWrR.jpg",
-  "overview":  "Immediately after the events of The Desolation of Smaug, Bilbo and the dwarves try to defend Erebor's mountain of treasure from others who claim it: the men of the ruined Laketown and the elves of Mirkwood. Meanwhile an army of Orcs led by Azog the Defiler is marching on Erebor, fueled by the rise of the dark lord Sauron. Dwarves, elves and men must unite, and the hope for Middle-Earth falls into Bilbo's hands.", 
-  "vote_average": 7.2, 
+  "title": "The Hobbit: The Desolation of Smaug", 
+  "release_date": "2013-12-11", 
+  "poster_path":  "/gQCiuxGsfiXH1su6lp9n0nd0UeH.jpg",
+  "overview":  "The Dwarves, Bilbo and Gandalf have successfully escaped the Misty Mountains, and Bilbo has gained the One Ring. They all continue their journey to get their gold back from the Dragon, Smaug.", 
+  "vote_average": 7.5, 
   "netflix": true,
   "amazon": false,
   "hbo": true,
@@ -291,7 +291,7 @@
 {
   "title": "Rogue One: A Star Wars Story", 
   "release_date": "2016-12-14", 
-  "poster_path":  "/bKPtXn9n4M4s8vvZrbw40mYsefB.jpg",
+  "poster_path":  "/qjiskwlV1qQzRCjpV0cL9pEMF9a.jpg",
   "overview":  "A rogue band of resistance fighters unite for a mission to steal the Death Star plans and bring a new hope to the galaxy.", 
   "vote_average": 7.4, 
   "netflix": true,

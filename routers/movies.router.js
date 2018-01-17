@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
   Movies
     .find()
     .then(movies => {
-      console.log(movies);
+      // console.log(movies);
       res.json(movies);
     })
     .catch(err => {
@@ -58,9 +58,9 @@ router.post('/', (req, res) => {
   Movies
     .findById(req.body.id)
     .then(movies => {
-      console.log(movies);
+      // console.log(movies);
       obj = movies;
-      console.log(obj);
+      // console.log(obj);
       return Favorites
         .create({
           title: obj.title,
@@ -106,7 +106,7 @@ router.put('/:id', (req, res) => {
 
   Favorites
     .findByIdAndUpdate(req.params.id, {$set: updateObj})
-    .then(favorites => res.status(204).end())
+    .then(favorites => res.status(200).end())
     .catch(err => res.status(500).json({message: 'Internal server error'}));
 });
 

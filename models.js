@@ -36,7 +36,7 @@ const favoritesSchema = mongoose.Schema({
 //Reference method for Favorites schema
 
 //Refer to movies for favorites movieId
-const movieReference = mongoose.model('movieReference', movieSchema);
+// const movieReference = mongoose.model('movieReference', movieSchema);
 
 //Favorites schema with reference
 // const favoritesSchema = mongoose.Schema({
