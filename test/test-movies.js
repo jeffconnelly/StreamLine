@@ -4,9 +4,68 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const should = chai.should();
 const expect = chai.expect;
+const faker = require('faker');
+const mongoose = require('mongoose');
 const {app, runServer, closeServer} = require('../server');
+const { PORT, DATABASE_URL } = require('../config');
+const { Movies, Favorites }  = require('../models.js');
+
+
 
 chai.use(chaiHttp);
+
+function tearDownDb() {
+  return new Promise((resolve, reject) => {
+    console.warn('Deleting database');
+    mongoose.connection.dropDatabase()
+      .then(result => resolve(result))
+      .catch(err => reject(err));
+  });
+}
+
+function seedMoviePostData() {
+  console.info('seeding movies data');
+  const seedData = [];
+  for (let i = 1; i <= 5; i++) {
+    seedData.push({
+      title: faker.lorem.text(),
+      overview: faker.lorem.sentence(),
+      release_date: faker.lorem.string(),
+      poster_path: '/uexxR7Kw1qYbZk0RYaF9Rx5ykbj.jpg',
+      vote_average: faker.lorem.number(),
+      netflix: true,
+      amazon: false,
+      hbo: true,
+      hulu: false,
+    });
+  }
+
+  // this will return a promise
+  return Movies.insertMany(seedData);
+}
+
+describe('Movies resource', function () {
+
+  before(function () {
+    return runServer(DATABASE_URL);
+  });
+
+  beforeEach(function () {
+    return seedMoviePostData();
+  });
+
+  afterEach(function () {
+    return tearDownDb();
+  });
+
+  after(function () {
+    return closeServer();
+  });
+});
+
+
+
+
 
 describe('Movies', function() {
   it('should load HTML file', function() {
