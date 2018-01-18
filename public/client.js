@@ -64,9 +64,9 @@ function boxOfficeTemplate(item) {
         <div class = "release-date"> Release Date: ${item.release_date}</div> 
         <p class = "overview"> Overview:${item.overview}</p> 
         <p class = "vote-rating"> Rating:${item.vote_average}</p> 
-        <label > My Rating:${item.user_rating}</label> 
+        <label > My Rating:<span class = hide>${item.user_rating}</span></label> 
           <input type = "number" name = "user-rating" id = "user-rating" >
-        <label > Comments:${item.comment}</label> 
+        <label > Comments:<span class = hide>${item.comment}</span></label> 
           <input type = "text" name = "user-comments" id = "user-comments" >
         <ul class = "stream-list" >
           <li> Amazon:${item.amazon}</li> 
@@ -209,6 +209,8 @@ function displayBoxOffice(data) {
   console.log(data);
   console.log('displayBoxOffice');
   if (data.length !== 0) {
+    console.log()
+    $('.hide').show();
     $('.movie-list').remove();
     $('.movie-card-list').remove();
     $('.box-office-list').remove();

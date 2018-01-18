@@ -53,6 +53,10 @@ li {
     padding: 0px;
 }
 
+.hide {
+    display:none;
+}
+
 
 /* .movie-list:after {
     content: "";
