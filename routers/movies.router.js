@@ -125,7 +125,7 @@ router.put('/:id', (req, res) => {
   // console.log('UPDATE, ', updateObj);
   Favorites
     .findByIdAndUpdate(req.params.id, { $set: updateObj })
-    .then(favorites => res.status(204).end())
+    .then(favorites => res.status(200).end())
     .catch(err => res.status(500).json({ message: 'Internal server error' }));
 });
 

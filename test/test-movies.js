@@ -25,23 +25,21 @@ function tearDownDb() {
 
 function seedMoviePostData() {
   console.info('seeding movies data');
-  const seedData = [];
-  for (let i = 1; i <= 5; i++) {
-    seedData.push({
-      title: faker.lorem.text(),
-      overview: faker.lorem.sentence(),
-      release_date: faker.lorem.string(),
-      poster_path: '/uexxR7Kw1qYbZk0RYaF9Rx5ykbj.jpg',
-      vote_average: faker.lorem.number(),
-      netflix: true,
-      amazon: false,
-      hbo: true,
-      hulu: false,
-    });
-  }
+  const seedData = {
+    'title': 'The Lord of the Rings: The Return of the King', 
+    'release_date': '2003-12-01', 
+    'poster_path': '/uexxR7Kw1qYbZk0RYaF9Rx5ykbj.jpg', 
+    'overview': 'Aragorn is revealed as the heir to the ancient kings as he, Gandalf and the other members of the broken fellowship struggle to save Gondor from Sauron\'s forces. Meanwhile, Frodo and Sam bring the ring closer to the heart of Mordor, the dark lord\'s realm.', 
+    'vote_average': 8.2, 
+    'netflix': true,
+    'amazon': false,
+    'hbo': true,
+    'hulu': false
+  };
+  
 
   // this will return a promise
-  return Movies.insertMany(seedData);
+  return Movies.insert(seedData);
 }
 
 describe('Movies resource', function () {
