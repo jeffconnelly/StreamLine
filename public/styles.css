@@ -53,6 +53,10 @@ li {
     padding: 0px;
 }
 
+.stream-list {
+    padding: 0px;
+}
+
 
 /* .movie-list:after {
     content: "";

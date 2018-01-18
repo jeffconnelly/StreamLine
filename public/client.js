@@ -58,6 +58,7 @@ function boxOfficeTemplate(item) {
   let comment;
 
   if (item.user_rating) {
+    console.log(`${item.rating}`);
     rating = item.user_rating;
   } else {
     rating = '';
@@ -78,7 +79,7 @@ function boxOfficeTemplate(item) {
         <p class = "overview"> Overview:${item.overview}</p> 
         <p class = "vote-rating"> Rating:${item.vote_average}</p> 
         <label >My Rating:${rating}</label> 
-          <input type = "number" name = "user-rating" id = "user-rating" >
+          <input type = "number" name = "user-rating" id = "user-rating" ></br></br>
         <label >Comments:${comment}</label> 
           <input type = "text" name = "user-comments" id = "user-comments" >
         <ul class = "stream-list" >
@@ -163,7 +164,6 @@ function getMovieCard() {
       },
       type: 'GET'
     });
-
   });
 } //end getMovieCard
 
@@ -186,10 +186,11 @@ function updateBoxOffice() {
   console.log('updateBoxOffice');
   $('#movie-list-form').on('click', '.update-movie', event => {
     event.preventDefault();
-    let rating = $('#user-rating').val();
+    let rating = $(event.currentTarget).closest('li').find('#user-rating').val();
     console.log(rating);
-    let comment = $('#user-comments').val();
+    let comment = $(event.currentTarget).closest('li').find('#user-comments').val();
     console.log(comment);
+
     let id = $(event.currentTarget).closest('li').find('div.id');
     id = id[0].innerText;
     console.log(rating, comment, id);
@@ -305,10 +306,10 @@ function displayBoxOffice(data) {
 
 
 $(getMovieList);
+$(updateBoxOffice);
 $(displayMovieList);
 $(addToBoxOffice);
 $(deleteFromBoxOffice);
-$(updateBoxOffice);
 $(getMovieCard);
 $(goToBoxOffice);
 $(backToMovieList);
