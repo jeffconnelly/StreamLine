@@ -182,29 +182,6 @@ function getBoxOfficeList() {
 } //end getMovieList
 
 
-function displayBoxOffice(data) {
-  console.log(data);
-  console.log('displayBoxOffice');
-  if (data.length !== 0) {
-    console.log()
-    $('.hide').show();
-    $('.movie-list').remove();
-    $('.movie-card-list').remove();
-    $('.box-office-list').remove();
-    $('#movie-list-form').append('<ul class="box-office-list"></ul>');
-
-    const movie = data.map((item) => boxOfficeTemplate(item));
-    $('.box-office-list').html(movie);
-  } else {
-    $('.movie-list').remove();
-    $('.movie-card-list').remove();
-    $('.box-office-list').remove();
-    getMovieList();
-  }
-
-
-} //end displayBoxOffice
-
 
 function updateBoxOffice() {
   console.log('updateBoxOffice');
