@@ -122,7 +122,7 @@ describe('Movies resource', function () {
         })
         .then(function(res) {
           console.log(res);
-          expect(res).to.have.status(200);
+          expect(res).to.have.status(204);
         //Currently updates, but no response.
         // expect(res).to.be.json;
         // expect(res.body).to.be.a('object');
