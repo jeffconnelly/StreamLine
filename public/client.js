@@ -45,14 +45,17 @@ function movieCardTemplate(item) {
       </ul>
       <div class = "movie-item-controls" >
         <button class = "add-to-box-office" >
-        <span class = "button-label" > Add to Box Office </span></button> 
+          <span class = "button-label" > Add to Box Office </span></button> 
         <button class = "update-movie" >
-        <span class = "button-label" > Update </span> </button> 
+          <span class = "button-label" > Update </span> </button> 
         <button class = "clear-movie" >
-        <span class = "button-label" > Clear </span> 
-        </button > <
-        /div> < /
-    li > `;
+          <span class = "button-label" > Clear </span> 
+        </button>
+        <button class = "back-to-list" >
+            <span class = "back-to-list" > Back to Movie List </span> 
+        </button>
+      </div> 
+      </li> `;
 }
 
 function boxOfficeTemplate(item) {
@@ -80,7 +83,10 @@ function boxOfficeTemplate(item) {
         <div class = "movie-item-controls" >
           <button class = "remove-movie" >
             <span class = "button-label" > Remove </span> 
-          </button> 
+          </button>
+          <button class = "back-to-list" >
+            <span class = "back-to-list" > Back to Movie List </span> 
+          </button>
         </div> 
         </div>
         </li>`;
@@ -246,7 +252,20 @@ function deleteFromBoxOffice() {
   });
 } //deleteFromBoxOffice
 
-
+function backToMovieList() {
+  $('#movie-list-form').on('click', '.back-to-list', event => {
+    $.ajax({
+      url: streamURL,
+      data: {
+        format: 'json'
+      },
+      success: function(data) {
+        displayMovieList(data);
+      },
+      type: 'GET'
+    });
+  });
+}
 $(getMovieList);
 $(displayMovieList);
 $(addToBoxOffice);
