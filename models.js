@@ -11,10 +11,10 @@ const movieSchema = mongoose.Schema({
   poster_path: String,
   overview: String,
   vote_average: Number,
-  netflix: Boolean,
-  amazon: Boolean,
-  hbo: Boolean,
-  hulu: Boolean
+  netflix: String,
+  amazon: String,
+  hbo: String,
+  hulu: String
 });
 
 //Favorites schema hard coded
@@ -24,10 +24,10 @@ const favoritesSchema = mongoose.Schema({
   poster_path: String,
   overview: String,
   vote_average: Number,
-  netflix: Boolean,
-  amazon: Boolean,
-  hbo: Boolean,
-  hulu: Boolean,
+  netflix: String,
+  amazon: String,
+  hbo: String,
+  hulu: String,
   comment: String,
   user_rating: Number
 });
@@ -39,12 +39,12 @@ const favoritesSchema = mongoose.Schema({
 // const movieReference = mongoose.model('movieReference', movieSchema);
 
 //Favorites schema with reference
-// const favoritesSchema = mongoose.Schema({
+// const favoritesSchema = mongoose.Schema([{
 //   movieId:  {type: mongoose.Schema.Types.ObjectId, 
 //     ref: 'MovieReference'},
 //   comment: String,
 //   user_rating: Number,
-// });
+// }]);
 
 
 // //Users schema shell

@@ -30,6 +30,10 @@ function movieCardTemplate(item) {
     <span class="movie-title">${item.title}</span>
     <div class = "id" style="display:none;">${item.id}</div>
     <div class = "poster-path"><img src="http://image.tmdb.org/t/p/w185//${item.poster_path}"</></div>
+<<<<<<< HEAD
+=======
+    <div class = "release-date"> Release Date: ${item.release_date}</div> 
+>>>>>>> d32dbf018b74d27dd150920a3782bae77bc23f7d
     <p>Overview: ${item.overview}</p><p>Rating: ${item.vote_average}</p>
     <ul class="stream-list">
     <lable>Streaming On:</label>
@@ -61,7 +65,7 @@ function boxOfficeTemplate(item) {
         <div class = "poster-path"> 
           <img src = "http://image.tmdb.org/t/p/w185//${item.poster_path}"></>
         </div>
-        <div class = "release-date"> Release Date: ${item.release_date }</div> 
+        <div class = "release-date"> Release Date: ${item.release_date}</div> 
         <p class = "overview"> Overview:${item.overview}</p> 
         <p class = "vote-rating"> Rating:${item.vote_average}</p> 
         <label > My Rating:${item.user_rating}</label> 

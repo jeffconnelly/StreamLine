@@ -23,10 +23,10 @@ app.use('/stream', moviesRouter);
 //Server functions
 let server;
 
-function runServer() {
+function runServer(dbUrl) {
   console.log('run server started');
   return new Promise((resolve, reject) => {
-    mongoose.connect(DATABASE_URL, { useMongoClient: true }, err => {
+    mongoose.connect(dbUrl, { useMongoClient: true }, err => {
       if (err) {
         return reject(err);
       }
@@ -58,7 +58,7 @@ function closeServer() {
 }
 
 if (require.main === module) {
-  runServer().catch(err => console.error(err));
+  runServer(DATABASE_URL).catch(err => console.error(err));
 }
 
 module.exports = { app, runServer, closeServer };
