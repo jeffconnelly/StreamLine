@@ -54,6 +54,20 @@ function movieCardTemplate(item) {
 
 function boxOfficeTemplate(item) {
   console.log('boxOfficeTemplate');
+  let rating;
+  let comment;
+
+  if (item.user_rating) {
+    rating = item.user_rating;
+  } else {
+    rating = '';
+  }
+  if (item.comment) {
+    comment = item.comment;
+  } else {
+    comment = '';
+  }
+
   return `<li class = "box-office" >
         <div class = "box-office-card" >
         <p><span class = "movie-title" >${item.title} </span></p>
@@ -64,11 +78,12 @@ function boxOfficeTemplate(item) {
         <div class = "release-date"> Release Date: ${item.release_date}</div> 
         <p class = "overview"> Overview:${item.overview}</p> 
         <p class = "vote-rating"> Rating:${item.vote_average}</p> 
-        <label > My Rating:${item.user_rating}</label> 
+        <label >My Rating:${rating}</label> 
           <input type = "number" name = "user-rating" id = "user-rating" >
-        <label > Comments:${item.comment}</label> 
+        <label >Comments:${comment}</label> 
           <input type = "text" name = "user-comments" id = "user-comments" >
         <ul class = "stream-list" >
+          <lable>Streaming On:</label>
           <li> Amazon:${item.amazon}</li> 
           <li> HBO:${item.hbo}</li> 
           <li> Netflix:${item.netflix}</li> 
