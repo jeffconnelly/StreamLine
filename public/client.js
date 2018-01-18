@@ -1,7 +1,7 @@
 'use strict';
 
 ///////////const definitions/////////////
-const serverbase = '//localhost:8080/';
+const serverbase = '/';
 const streamURL = serverbase + 'stream';
 const boxOfficeURL = streamURL + '/favorites';
 
