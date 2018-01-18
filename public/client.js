@@ -30,12 +30,7 @@ function movieCardTemplate(item) {
     <span class="movie-title">${item.title}</span>
     <div class = "id" style="display:none;">${item.id}</div>
     <div class = "poster-path"><img src="http://image.tmdb.org/t/p/w185//${item.poster_path}"</></div>
-    <div class = "release-date">Release Date: ${item.release_date}</div>
     <p>Overview: ${item.overview}</p><p>Rating: ${item.vote_average}</p>
-    <label>My Rating:</label>
-      <input type="number" name="user-rating" id="user-rating">
-    <label>Comments:</label>
-      <input type="text" name="user-comments" id="user-comments">
     <ul class="stream-list">
     <lable>Streaming On:</label>
       <li>Amazon: ${item.amazon}</li> 
@@ -45,14 +40,13 @@ function movieCardTemplate(item) {
       </ul>
       <div class = "movie-item-controls" >
         <button class = "add-to-box-office" >
-          <span class = "button-label" > Add to Box Office </span></button> 
-        <button class = "update-movie" >
-          <span class = "button-label" > Update </span> </button> 
-        <button class = "clear-movie" >
-          <span class = "button-label" > Clear </span> 
-        </button>
+          <span class = "button-label" > Add to Box Office </span>
+        </button>  
         <button class = "back-to-list" >
-            <span class = "back-to-list" > Back to Movie List </span> 
+          <span class = "button-label" > Back to Movie List </span> 
+        </button>
+        <button class = "go-to-box-office-list" >
+          <span class = "button-label" > Go To Box Office </span> 
         </button>
       </div> 
       </li> `;
@@ -84,8 +78,10 @@ function boxOfficeTemplate(item) {
           <button class = "remove-movie" >
             <span class = "button-label" > Remove </span> 
           </button>
+          <button class = "update-movie" >
+            <span class = "button-label" > Update </span> </button>
           <button class = "back-to-list" >
-            <span class = "back-to-list" > Back to Movie List </span> 
+            <span class = "button-label" > Back to Movie List </span> 
           </button>
         </div> 
         </div>
@@ -168,13 +164,31 @@ function addToBoxOffice() {
       url: streamURL,
       data: JSON.stringify({ id }),
       success: function(data) {
-        getBoxOfficeList(data);
+        changeButtonToAdded(data);
       },
       contentType: 'application/json',
       type: 'POST'
     });
   });
 } //end addToBoxOffice
+
+
+function changeButtonToAdded() {
+  $('.add-to-box-office').remove();
+  $('.movie-item-controls').prepend(`<button class = "added" disabled= "">
+<span class = "button" >Added</span>`);
+}
+
+
+function goToBoxOffice() {
+  console.log('goToBoxOffice');
+
+  $('#movie-list-form').on('click', '.go-to-box-office-list', event => {
+    event.preventDefault();
+    getBoxOfficeList();
+  });
+}
+
 
 function getBoxOfficeList() {
   console.log('getBoxOfficeList');
@@ -194,14 +208,21 @@ function getBoxOfficeList() {
 function displayBoxOffice(data) {
   console.log(data);
   console.log('displayBoxOffice');
-  $('.movie-list').remove();
-  $('.movie-card-list').remove();
-  $('#movie-list-form').append('<ul class="box-office-list"></ul>');
+  if (data.length !== 0) {
+    $('.movie-list').remove();
+    $('.movie-card-list').remove();
+    $('#movie-list-form').append('<ul class="box-office-list"></ul>');
 
-  const movie = data.map((item) => boxOfficeTemplate(item));
-  $('.box-office-list').html(movie);
-  // $(updateBoxOffice);
-  // $(deleteFromBoxOffice);
+    const movie = data.map((item) => boxOfficeTemplate(item));
+    $('.box-office-list').html(movie);
+  } else {
+    $('.movie-list').remove();
+    $('.movie-card-list').remove();
+    $('.box-office-list').remove();
+    getMovieList();
+  }
+
+
 } //end displayBoxOffice
 
 
@@ -272,4 +293,5 @@ $(addToBoxOffice);
 $(deleteFromBoxOffice);
 $(updateBoxOffice);
 $(getMovieCard);
-// $(getBoxOfficeList);
+$(goToBoxOffice);
+$(backToMovieList);

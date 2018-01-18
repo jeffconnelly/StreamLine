@@ -49,10 +49,7 @@ li {
 .movie-card-list {
     display: table;
     width: 100%;
-    float: left;
-}
-
-.stream-list {
+    /* float: left; */
     padding: 0px;
 }
 
