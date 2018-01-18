@@ -211,6 +211,7 @@ function displayBoxOffice(data) {
   if (data.length !== 0) {
     $('.movie-list').remove();
     $('.movie-card-list').remove();
+    $('.box-office-list').remove();
     $('#movie-list-form').append('<ul class="box-office-list"></ul>');
 
     const movie = data.map((item) => boxOfficeTemplate(item));
