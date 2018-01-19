@@ -125,27 +125,27 @@ describe('Movies resource', function () {
     });
 
     //** Still working on POST test **/
-    let ObjectId = require('mongoose').Types.ObjectId;
+    // let ObjectId = require('mongoose').Types.ObjectId;
 
-    it('should add a movie to Box Office', function() {
+    // it('should add a movie to Box Office', function() {
 
-      const idData = {
-        _id: ObjectId("5a60e2a01ac0adb9acea213f");
-      };
+    //   const idData = {
+    //     _id: ObjectId("5a60e2a01ac0adb9acea213f");
+    //   };
 
-      console.log();
-      // let postResponse;
-      return chai.request(app)
-        .post('/stream')
-        .send(idData)
-        .then(function(res) {
-          expect(res).to.have.status(201);
-          expect(res).to.be.json;
-          expect(res.body).to.be.a('object');
-          expect(res.body).to.include.keys('id', 'title', 'overview', 'vote_average', 'poster_path','amazon', 'hbo', 'hulu', 'netflix');
-          expect(res.body.id).to.not.equal(null);
-        });
-    });
+    //   console.log();
+    //   // let postResponse;
+    //   return chai.request(app)
+    //     .post('/stream')
+    //     .send(idData)
+    //     .then(function(res) {
+    //       expect(res).to.have.status(201);
+    //       expect(res).to.be.json;
+    //       expect(res.body).to.be.a('object');
+    //       expect(res.body).to.include.keys('id', 'title', 'overview', 'vote_average', 'poster_path','amazon', 'hbo', 'hulu', 'netflix');
+    //       expect(res.body.id).to.not.equal(null);
+    //     });
+    // });
 
     it('should update movie in Box Office', function() {
 
