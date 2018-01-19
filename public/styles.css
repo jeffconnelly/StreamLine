@@ -6,19 +6,22 @@ body {
     position: scroll;
 }
 
+h1 {
+    font-size: 3.8em;
+    letter-spacing: 2px;
+    margin-bottom: -20px;
+}
+
+h2 {
+    font-size: 2em;
+    margin-bottom: 65px;
+}
+
 h1,
 h2 {
     text-align: center;
     color: red;
     font-family: 'Fredoka One', cursive;
-}
-
-h1 {
-    font-size: 30px,
-}
-
-h2 {
-    font-size: 15px,
 }
 
 li {
@@ -32,6 +35,11 @@ li {
     position: right;
     opacity: 1;
 }
+
+/* img {
+height: 300px;
+max-width: 200px;
+} */
 
 .movie-item,
 .box-office,
@@ -51,7 +59,16 @@ li {
     width: 100%;
     /* float: left; */
     padding: 0px;
+    margin: 0 auto;
 }
+
+/* .box-office-list {
+    display: table;
+    padding: 0px;
+    margin: 0 auto;
+    width: 90%;
+} */
+
 
 .stream-list {
     padding: 0px;

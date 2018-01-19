@@ -18,7 +18,6 @@ router.use(bodyParser.json());
 
 //Endpoints
 router.get('/', (req, res) => {
-  // console.log('enter GET');
   Movies
     .find()
     .then(movies => {
@@ -30,6 +29,7 @@ router.get('/', (req, res) => {
       res.status(500).json({ error: 'something went wrong' });
     });
 });
+
 router.get('/favorites', (req, res) => {
   console.log('enter GET:Favorites');
   Favorites
@@ -59,25 +59,12 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
 
-  //Check required fields
-  // const requiredFields = ['title'];
-  // for (let i=0; i<requiredFields.length; i++) {
-  //   const field = requiredFields[i];
-  //   if (!(field in req.body)) {
-  //     const message = `Missing \`${field}\` in request body`;
-  //     console.error(message);
-  //     return res.status(400).send(message);
-  //   }
-  // }
-
   console.log(req.body.id);
   let obj;
   Movies
     .findById(req.body.id)
     .then(movies => {
-      // console.log(movies);
       obj = movies;
-      // console.log(obj);
       return Favorites
         .create({
           title: obj.title,
