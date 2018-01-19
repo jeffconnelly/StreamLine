@@ -12,7 +12,6 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-console.log('router works!');
 router.use(morgan('common'));
 router.use(bodyParser.json());
 
@@ -21,7 +20,6 @@ router.get('/', (req, res) => {
   Movies
     .find()
     .then(movies => {
-      console.log(movies);
       res.json(movies);
     })
     .catch(err => {
@@ -35,7 +33,6 @@ router.get('/favorites', (req, res) => {
   Favorites
     .find()
     .then(favorites => {
-      console.log(favorites);
       res.json(favorites);
     })
     .catch(err => {
@@ -55,7 +52,6 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  console.log(req.body.id);
   let obj;
   Movies
     .findById(req.body.id)

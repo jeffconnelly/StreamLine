@@ -3,7 +3,7 @@
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-//Define movie list schema
+//Movie schema
 const movieSchema = mongoose.Schema({
   title: String,
   release_date: String,
@@ -31,7 +31,7 @@ const favoritesSchema = mongoose.Schema({
   user_rating: Number
 });
 
-//Movies schema 
+//Movies schema serialized
 movieSchema.methods.serialize = function() {
   return {
     id: this._id,
@@ -46,7 +46,7 @@ movieSchema.methods.serialize = function() {
   };
 };
 
-//favorites schema 
+//Favorites schema serialized 
 favoritesSchema.methods.serialize = function() {
   return {
     id: this._id,
@@ -63,6 +63,7 @@ favoritesSchema.methods.serialize = function() {
   };
 };
 
+//Export movies and favorites schemas
 const Movies = mongoose.model('Movies', movieSchema);
 const Favorites = mongoose.model('Favorites', favoritesSchema);
 module.exports = { Movies, Favorites };

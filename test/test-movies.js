@@ -41,26 +41,6 @@ function seedMoviePostData() {
   return Movies.insertMany(seedData);
 }
 
-
-// function seedFavoritesPostData() {
-//   console.info('seeding movies data');
-//   const seedData = [];
-//   for (let i = 1; i <= 10; i++) {
-//     seedData.push({
-//       title: faker.name.title(), 
-//       release_date: faker.lorem.sentence(), 
-//       poster_path: faker.lorem.sentence(), 
-//       overview: faker.lorem.sentence(), 
-//       vote_average: faker.random.number(), 
-//       netflix: faker.lorem.sentence(),
-//       amazon: faker.lorem.sentence(),
-//       hbo: faker.lorem.sentence(),
-//       hulu: faker.lorem.sentence()
-//     });
-//   }
-//   return Favorites.insertMany(seedData);
-// }
-
 describe('Movies resource', function () {
 
   before(function () {
@@ -80,7 +60,6 @@ describe('Movies resource', function () {
   });
 
   describe('GET Movies', function() {
-
 
     it('should provide movie list on GET', function() {
       return chai.request(app)
@@ -115,6 +94,7 @@ describe('Movies resource', function () {
     });
 
     it('should provide one movie on GET by ID', function() {
+      
       return chai.request(app)
         .get('/stream')
         .then(function(res) {
@@ -123,9 +103,6 @@ describe('Movies resource', function () {
           expect(res.body).to.be.a('array');
         });
     });
-
-    //** Still working on POST test **/
-    // let ObjectId = require('mongoose').Types.ObjectId;
 
     it('should add a movie to Box Office', function() {
 
@@ -142,7 +119,6 @@ describe('Movies resource', function () {
           expect(res.body).to.include.keys('id', 'title', 'overview', 'vote_average', 'poster_path','amazon', 'hbo', 'hulu', 'netflix');
         });
     });
-
 
     it('should update movie in Box Office', function() {
 

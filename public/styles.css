@@ -1,3 +1,5 @@
+/*----- Whole Page CSS -----*/
+
 * {
 	box-sizing: border-box;
 }
@@ -9,6 +11,8 @@ body {
     background-repeat: no-repeat;
     position: scroll;
 }
+
+/*----- Header CSS -----*/
 
 h1 {
     font-size: 3.8em;
@@ -30,8 +34,6 @@ h2 {
 
 .transparent {
     background:rgba(248,248,248,0.1);
-    /* margin-bottom: 30px;
-    margin-top: 30px; */
     margin: 0 auto;
     max-width: 90%;
 }
@@ -41,6 +43,9 @@ h2 {
     text-align: center;
     color: #FF4500;
 }
+
+/*----- Main CSS -----*/
+
 
 li {
     display: inline-block;
@@ -81,7 +86,6 @@ max-width: 200px;
 .movie-card-list {
     display: table;
     width: 100%;
-    /* float: left; */
     padding: 0px;
     margin: 0 auto;
 }
@@ -147,13 +151,6 @@ max-width: 200px;
 .update-movie {
     width: 80px;
 }
-
-
-/* .movie-list:after {
-    content: "";
-    display: table;
-    clear: both;
-} */
 
 #user-rating,
 #user-comments {
