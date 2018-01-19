@@ -27,16 +27,16 @@ function movieCardTemplate(item) {
   console.log('movieCardTemplate');
   console.log(item);
   return `<li class = "movie-card">
-    <span class="movie-title">${item.title}</span>
+    <span class="movie-title-card">${item.title}</span>
     <div class = "id" style="display:none;">${item.id}</div>
     <div class = "poster-path"><img src="http://image.tmdb.org/t/p/w185//${item.poster_path}"</></div>
-    <p>Overview: ${item.overview}</p><p>Rating: ${item.vote_average}</p>
+    <p class="overview"><span class="bold-title">Overview:</span> ${item.overview}</p><p><span class="bold-title">Rating:</span> ${item.vote_average}</p>
     <ul class="stream-list">
-    <lable>Streaming On:</label>
+    <label class="bold-title">Streaming:</label>
       <li>Amazon: ${item.amazon}</li> 
       <li> HBO: ${ item.hbo }</li> 
-      <li> Netflix: ${ item.netflix } </li> 
       <li> Hulu: ${item.hulu } </li>
+      <li> Netflix: ${ item.netflix } </li> 
       </ul>
       <div class = "movie-item-controls" >
         <button class = "add-to-box-office" >
@@ -70,24 +70,24 @@ function boxOfficeTemplate(item) {
   }
   return `<li class = "box-office" >
         <div class = "box-office-card" >
-        <p><span class = "movie-title" >${item.title} </span></p>
+        <p><span class = "movie-title-card" >${item.title} </span></p>
         <div class = "id" style = "display:none;" >${item._id}</div> 
         <div class = "poster-path"> 
           <img src = "http://image.tmdb.org/t/p/w185//${item.poster_path}"></>
         </div>
-        <div class = "release-date"> Release Date: ${item.release_date}</div> 
-        <p class = "overview"> Overview:${item.overview}</p> 
-        <p class = "vote-rating"> Rating:${item.vote_average}</p> 
-        <label >My Rating:${rating}</label> 
+        <div class = "release-date"><span class="bold-title"> Release Date: </span>${item.release_date}</div> 
+        <p class = "overview"><span class="bold-title"> Overview: </span>${item.overview}</p> 
+        <p class = "vote-rating"><span class="bold-title">  Rating: </span>${item.vote_average}</p> 
+        <label ><span class="bold-title"> My Rating: </span>${rating}</label><br> 
           <input type = "number" name = "user-rating" id = "user-rating" ></br></br>
-        <label >Comments:${comment}</label> 
+        <label ><span class="bold-title">Comments: </span>${comment}</label><br> 
           <input type = "text" name = "user-comments" id = "user-comments" >
         <ul class = "stream-list" >
-          <lable>Streaming On:</label>
-          <li> Amazon:${item.amazon}</li> 
-          <li> HBO:${item.hbo}</li> 
-          <li> Netflix:${item.netflix}</li> 
-          <li> Hulu:${item.hulu}</li>
+          <label><span class="bold-title">Streaming: </span></label>
+          <li> Amazon: ${item.amazon}</li> 
+          <li class='available-movie'> HBO: ${item.hbo}</li> 
+          <li> Hulu: ${item.hulu}</li>
+          <li> Netflix: ${item.netflix}</li> 
         </ul>
         <div class = "movie-item-controls" >
           <button class = "remove-movie" >

@@ -7,7 +7,7 @@ const faker = require('faker');
 
 const expect = chai.expect;
 
-const { Movies }  = require('../models.js');
+const { Movies}  = require('../models.js');
 const {app, runServer, closeServer} = require('../server');
 const { TEST_DATABASE_URL } = require('../config');
 
@@ -40,6 +40,26 @@ function seedMoviePostData() {
   }
   return Movies.insertMany(seedData);
 }
+
+
+// function seedFavoritesPostData() {
+//   console.info('seeding movies data');
+//   const seedData = [];
+//   for (let i = 1; i <= 10; i++) {
+//     seedData.push({
+//       title: faker.name.title(), 
+//       release_date: faker.lorem.sentence(), 
+//       poster_path: faker.lorem.sentence(), 
+//       overview: faker.lorem.sentence(), 
+//       vote_average: faker.random.number(), 
+//       netflix: faker.lorem.sentence(),
+//       amazon: faker.lorem.sentence(),
+//       hbo: faker.lorem.sentence(),
+//       hulu: faker.lorem.sentence()
+//     });
+//   }
+//   return Favorites.insertMany(seedData);
+// }
 
 describe('Movies resource', function () {
 
@@ -81,7 +101,7 @@ describe('Movies resource', function () {
     it('should provide favorites list on GET', function() {
 
       return chai.request(app)
-        .get('/stream/favorites')
+        .get('/stream')
         .then(function(res) {
           expect(res).to.have.status(200);
           expect(res).to.be.json;
@@ -104,25 +124,28 @@ describe('Movies resource', function () {
         });
     });
 
-    // it('should add a movie to Box Office', function() {
+    //** Still working on POST test **/
+    let ObjectId = require('mongoose').Types.ObjectId;
 
-    //   // const idData = {
-    //   //   _id: mongoose.Types.ObjectId()
-    //   // };
+    it('should add a movie to Box Office', function() {
 
-    //   // console.log();
-    //   // // let postResponse;
-    //   // return chai.request(app)
-    //   //   .post('/stream')
-    //   //   .send(idData)
-    //   //   .then(function(res) {
-    //   //     expect(res).to.have.status(201);
-    //   //     // expect(res).to.be.json;
-    //   //     // expect(res.body).to.be.a('object');
-    //   //     // expect(res.body).to.include.keys('id', 'title', 'overview', 'vote_average', 'poster_path','amazon', 'hbo', 'hulu', 'netflix');
-    //   //     // expect(res.body.id).to.not.equal(null);
-    //   //   });
-    // });
+      const idData = {
+        _id: ObjectId("5a60e2a01ac0adb9acea213f");
+      };
+
+      console.log();
+      // let postResponse;
+      return chai.request(app)
+        .post('/stream')
+        .send(idData)
+        .then(function(res) {
+          expect(res).to.have.status(201);
+          expect(res).to.be.json;
+          expect(res.body).to.be.a('object');
+          expect(res.body).to.include.keys('id', 'title', 'overview', 'vote_average', 'poster_path','amazon', 'hbo', 'hulu', 'netflix');
+          expect(res.body.id).to.not.equal(null);
+        });
+    });
 
     it('should update movie in Box Office', function() {
 
@@ -158,7 +181,6 @@ describe('Movies resource', function () {
         });
     });
   });
-
 });
 
 

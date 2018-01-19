@@ -44,7 +44,6 @@ router.get('/favorites', (req, res) => {
     });
 });
 
-
 router.get('/:id', (req, res) => {
   Movies
     .findById(req.params.id)
@@ -55,10 +54,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
-
-
 router.post('/', (req, res) => {
-
   console.log(req.body.id);
   let obj;
   Movies
@@ -86,21 +82,7 @@ router.post('/', (req, res) => {
     });
 });
 
-//Reference to main DB method
-// Favorites
-//   .create({
-//     movieId: Movies,
-//     comment: req.body.comment,
-//     user_rating: req.body.user_rating})
-//   .then(
-//     movies => res.status(201).json(movies.serialize()))
-//   .catch(err => {
-//     console.error(err);
-//     res.status(500).json({message: 'Internal server error'});
-//   });
-
 router.put('/:id', (req, res) => {
-  // console.log('BACKEND PUT');
   const updateObj = {};
   const updateableFields = ['comment', 'user_rating'];
 
@@ -109,7 +91,6 @@ router.put('/:id', (req, res) => {
       updateObj[field] = req.body[field];
     }
   });
-  // console.log('UPDATE, ', updateObj);
   Favorites
     .findByIdAndUpdate(req.params.id, { $set: updateObj })
     .then(favorites => res.status(204).end())

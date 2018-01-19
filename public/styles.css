@@ -55,6 +55,7 @@ max-width: 200px;
     background-color: #FEF9E7;
     border-radius: 12px;
     display: table-cell, block;
+    opacity: .98;
 }
 
 .movie-item {
@@ -90,9 +91,48 @@ max-width: 200px;
     word-wrap: break-word;
 }
 
+.movie-title-card {
+    margin-bottom: 15px;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.bold-title {
+    font-weight: bold;
+}
 
 .stream-list {
     padding: 0px;
+}
+
+.stream-list li:not(:first-child):before {
+    content: '|';
+    margin-right: 18px;
+}
+
+.view-movie {
+    background-color: #87CEFA;
+    border-radius: 5px;
+    border: 1px solid black;
+    width: 60px;
+    margin-top: 10px;
+}
+
+.add-to-box-office,
+.back-to-list,
+.go-to-box-office-list,
+.remove-movie,
+.update-movie {
+    background-color: #87CEFA;
+    border-radius: 5px;
+    border: 1px solid black;
+    margin-top: 15px;
+}
+
+.remove-movie,
+.update-movie {
+    width: 80px;
 }
 
 
@@ -101,3 +141,8 @@ max-width: 200px;
     display: table;
     clear: both;
 } */
+
+#user-rating,
+#user-comments {
+    margin-top: 12px;
+}
