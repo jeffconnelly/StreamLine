@@ -6,7 +6,7 @@ Streamline your streaming process!  StreamLine is the definitive directory for f
 
 ## Link to Deployed Version of our Capstone
 
-https://dashboard.heroku.com/apps/streamline-capstone 
+https://streamline-capstone.herokuapp.com/
 
 ## REST API
 
