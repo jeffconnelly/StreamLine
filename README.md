@@ -4,6 +4,10 @@
 ## Pitch
 Streamline your streaming process!  StreamLine is the definitive directory for finding where you can watch movies and TV shows across multiple streaming services. 
 
+## Link to Deployed Version of our Capstone
+
+https://dashboard.heroku.com/apps/streamline-capstone 
+
 ## REST API
 
 Our REST API is providing data on movie titles and streaming services in an organized manner so users can quickly see which streaming service is available for their chosen title.   
