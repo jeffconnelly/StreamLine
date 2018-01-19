@@ -4,9 +4,18 @@
 ## Pitch
 Streamline your streaming process!  StreamLine is the definitive directory for finding where you can watch movies and TV shows across multiple streaming services. 
 
-## Link to Deployed Version of our Capstone
+## Link to Deployed Version
 
 https://streamline-capstone.herokuapp.com/
+
+## Tech Stack
+
+* Node.js
+* Express.js
+* Mocha and Chai
+* Mongoose and MongoDB
+* Travis CI & Heroku for CICD
+* Front End: HTML, CSS, JavaScript & jQuery
 
 ## REST API
 
@@ -17,16 +26,14 @@ Database: Database can store ~50 static movies on first iteration.  This databas
 
 CRUD Operations are based around the idea that users can save their movies they want to store in a Favorites list.  
 Create - Click that you want to save the movie, and it will save in your Favorites.  
-Read - Generates a list of popular movies on site load.  50 Static to start.  
+Read - Generates a list of popular movies on site load. 
 Search individual items.  
-Update - Can make notes on a Favorited movie, or give it a personal rating.   
-We also want to implement if movie availability has changed.  
+Update - Can make comments on a Favorited movie, or give it a personal rating.   
 Delete - Delete the movie from their Favorites.  
 
 ## API to retrieve data from:
 
-API to get data from: We can use the Movie DB https://www.themoviedb.org/ to grab data and then model our database based on their information.  
-Alternate API : http://omdbapi.com/ 
+API to get data from: We used https://www.themoviedb.org/ to grab data and then model our database based on their information. 
 
 ## MVP User Stories
 
@@ -68,5 +75,17 @@ Put / Update
 
 Delete / Delete
 * Delete a Box Office item - '/:id'  
+
+## Where the components live
+
+* Front end files live in the public folder.
+* Main router lives in the routers folder, redirected from our server.js file.
+* JSON static data lives in the json folder.
+* Database configuration lives in config.js
+* Mocha/Chai tests live in the test folder.
+
+## How it can be used
+
+We are currently at a phase where you can view available streaming services with static data, so someone could use it to check our list of static movies and where to view them.  We plan to implement live API calls on the server side and we also plan to implement user usability.
 
 
