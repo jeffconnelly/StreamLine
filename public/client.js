@@ -132,7 +132,6 @@ function addToBoxOffice() {
     let currentItem = event.currentTarget;
     let id = $(currentItem).closest('li').find('div.id');
     id = id[0].innerText;
-    console.log(id);
     $.ajax({ //Add movie to Favorites collection
       dataType: 'json',
       url: streamURL,
@@ -149,7 +148,6 @@ function addToBoxOffice() {
 function getMovieCard() {
   console.log('getMovieCard');
   $('.movie-list').on('click', '.view-movie', event => {
-    console.log('view click');
     event.preventDefault();
     let id = $(event.currentTarget).closest('li').find('div.id');
     let _id = id[0].innerHTML;
@@ -188,20 +186,18 @@ function updateBoxOffice() {
   $('#movie-list-form').on('click', '.update-movie', event => {
     event.preventDefault();
     let rating = $(event.currentTarget).closest('li').find('#user-rating').val();
-    console.log(rating);
+
     let comment = $(event.currentTarget).closest('li').find('#user-comments').val();
-    console.log(comment);
 
     let id = $(event.currentTarget).closest('li').find('div.id');
     id = id[0].innerText;
-    console.log(rating, comment, id);
+
 
     $.ajax({ //Update movie from Favorites Collection
       dataType: 'json',
       url: streamURL + '/' + id,
       data: JSON.stringify({ user_rating: rating, comment: comment }),
       success: function(data) {
-        console.log('UPDATE SUCCESS');
         getBoxOfficeList(data);
       },
       contentType: 'application/json',
@@ -217,7 +213,6 @@ function deleteFromBoxOffice() {
     event.preventDefault();
     let id = $(event.currentTarget).closest('li').find('div.id');
     id = id[0].innerText;
-    console.log(id);
 
     $.ajax({ //Delete movie from Favorites Collection
       dataType: 'json',
@@ -252,7 +247,6 @@ function displayMovieList(data) {
   console.log('displayMovieList');
   $('.box-office-list').remove;
   $('#movie-list-form').append('<ul class="movie-list"></ul>');
-  console.log(data);
   const movie = data.map((item) => movieListTemplate(item));
   $('.movie-list').html(movie);
 
@@ -287,7 +281,6 @@ function goToBoxOffice() {
 
 
 function displayBoxOffice(data) {
-  console.log(data);
   console.log('displayBoxOffice');
   if (data.length !== 0) {
     $('.movie-list').remove();
