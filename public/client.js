@@ -54,20 +54,10 @@ function movieCardTemplate(item) {
 
 function boxOfficeTemplate(item) {
   console.log('boxOfficeTemplate');
-  let rating;
-  let comment;
 
-  if (item.user_rating) {
-    console.log(`${item.rating}`);
-    rating = item.user_rating;
-  } else {
-    rating = '';
-  }
-  if (item.comment) {
-    comment = item.comment;
-  } else {
-    comment = '';
-  }
+  const rating = item.user_rating ? item.user_rating : '';
+  const comment = item.comment ? item.comment : '';
+
   return `<li class = "box-office" >
         <div class = "box-office-card" >
         <p><span class = "movie-title-card" >${item.title} </span></p>
@@ -147,7 +137,7 @@ function addToBoxOffice() {
 
 function getMovieCard() {
   console.log('getMovieCard');
-  $('.movie-list').on('click', '.view-movie', event => {
+  $('#movie-list-form').on('click', '.view-movie', event => {
     event.preventDefault();
     let id = $(event.currentTarget).closest('li').find('div.id');
     let _id = id[0].innerHTML;
@@ -298,12 +288,12 @@ function displayBoxOffice(data) {
   }
 } //end displayBoxOffice
 
-
-$(getMovieList);
-$(updateBoxOffice);
-$(displayMovieList);
-$(addToBoxOffice);
-$(deleteFromBoxOffice);
-$(getMovieCard);
-$(goToBoxOffice);
-$(backToMovieList);
+$(function() {
+  getMovieList();
+  updateBoxOffice();
+  addToBoxOffice();
+  deleteFromBoxOffice();
+  getMovieCard();
+  goToBoxOffice();
+  backToMovieList();
+});
