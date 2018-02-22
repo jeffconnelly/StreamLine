@@ -33,7 +33,23 @@ Delete - Delete the movie from their Favorites.
 
 ## API to retrieve data from:
 
-API to get data from: We used https://www.themoviedb.org/ to grab data and then model our database based on their information. 
+API to get data from: We used https://www.themoviedb.org/ to grab data and then model our database based on their information.
+
+## Screenshots 
+
+- Header 
+
+![Header](screenshots/streamline-header.png "Landing Page Header")
+
+- Movie Card View 
+
+![Movie Card View](screenshots/streamline-movie-card.png "Movie Card View")
+
+- Favorites View
+
+![Favorites View](screenshots/streamline-box-office.png "Favorites View")
+
+
 
 ## MVP User Stories
 
