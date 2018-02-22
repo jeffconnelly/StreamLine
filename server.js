@@ -13,6 +13,7 @@ const { PORT, DATABASE_URL } = require('./config');
 const app = express();
 app.use(morgan('common'));
 
+
 //Send static files to client
 app.use(express.static('public'));
 
